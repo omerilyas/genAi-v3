@@ -1,0 +1,426 @@
+# Task 5: File Search using Gemini Online Retrieval Augmented Generation (RAG)
+
+???+ blank "File Search using Gemini"
+
+    ??? info "Introduction"
+        
+        === "Introduction"
+            
+            ![CW](./assets/task5a/gem.png)
+
+            Google have introduced a new File Search Tool, a fully managed RAG service built into the Gemini API that can be called with a single API example:https://generativelanguage.googleapis.com/v1beta/fileSearchStores. <a href="https://ai.google.dev/api/file-search/file-search-stores" target="_blank">More info can be found here</a>. 
+            
+            ![ToolG](./assets/task5a/searTool.png)
+            
+            In the earlier tasks, we learned how to build our own RAG pipeline using LangChain and vector stores, which gives us a lot of flexibility and control. With Gemini File Search, we now have another option: a managed RAG service where Google handles chunking, indexing, embeddings, and retrieval for us. Instead of replacing the old approach, this simply gives us a choice. For some use cases, building RAG yourself will still make sense for others, using Gemini File Search can reduce complexity so you can focus more on your application and AI-by-design decisions rather than the plumbing.
+            
+            ![rag6](./assets/task5/rag6.png)
+            
+            With the File Search Tool, things get much simpler. Instead of managing chunking, embeddings, and retrieval yourself, you just create a file search store and upload your documents. Gemini takes care of splitting, embedding, indexing, and retrieving the right content when you ask a question. This hides the retrieval pipeline so you can focus on your app. File Search gives you an easy, scalable way to ground Gemini on your own data, so answers are more accurate, relevant, and easier to verify. In practice, you simply upload your files, create a store, and let the API handle the rest. A nice bonus is pricing: you only pay for embeddings (depending on the embedding model you use. Default model gemini-embedding-001 at a fixed rate of $0.15 per 1 million tokens ) and for the LLM tokens that are in context. File storage and query-time embeddings are free according to Gemini documentation. For more details on embeddings and pricing, see: <a href="https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding" target="_blank" rel="noopener noreferrer">More info on embeddings and pricing</a>. For more details on tokens, see: <a href="https://ai.google.dev/gemini-api/docs/tokens" target="_blank" rel="noopener noreferrer">More info on tokens</a>. 
+            
+            At the time of writing this guide the following models support File Search: gemini-2.5-pro & gemini-2.5-flash. 
+            
+            See the notes below for the list of supported application and text file types.
+
+            ??? note
+                Supported application types
+                - `application/dart`
+                - `application/ecmascript`
+                - `application/json`
+                - `application/ms-java`
+                - `application/msword`
+                - `application/pdf`
+                - `application/sql`
+                - `application/typescript`
+                - `application/vnd.curl`
+                - `application/vnd.dart`
+                - `application/vnd.ibm.secure-container`
+                - `application/vnd.jupyter`
+                - `application/vnd.ms-excel`
+                - `application/vnd.oasis.opendocument.text`
+                - `application/vnd.openxmlformats-officedocument.presentationml.presentation`
+                - `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`
+                - `application/vnd.openxmlformats-officedocument.wordprocessingml.document`
+                - `application/vnd.openxmlformats-officedocument.wordprocessingml.template`
+                - `application/x-csh`
+                - `application/x-hwp`
+                - `application/x-hwp-v5`
+                - `application/x-latex`
+                - `application/x-php`
+                - `application/x-powershell`
+                - `application/x-sh`
+                - `application/x-shellscript`
+                - `application/x-tex`
+                - `application/x-zsh`
+                - `application/xml`
+                - `application/zip`
+                    
+
+
+            ??? note
+                Supported Text File types
+
+                - `text/1d-interleaved-parityfec`
+                - `text/RED`
+                - `text/SGML`
+                - `text/cache-manifest`
+                - `text/calendar`
+                - `text/cql`
+                - `text/cql-extension`
+                - `text/cql-identifier`
+                - `text/css`
+                - `text/csv`
+                - `text/csv-schema`
+                - `text/dns`
+                - `text/encaprtp`
+                - `text/enriched`
+                - `text/example`
+                - `text/fhirpath`
+                - `text/flexfec`
+                - `text/fwdred`
+                - `text/gff3`
+                - `text/grammar-ref-list`
+                - `text/hl7v2`
+                - `text/html`
+                - `text/javascript`
+                - `text/jcr-cnd`
+                - `text/jsx`
+                - `text/markdown`
+                - `text/mizar`
+                - `text/n3`
+                - `text/parameters`
+                - `text/parityfec`
+                - `text/php`
+                - `text/plain`
+                - `text/provenance-notation`
+                - `text/prs.fallenstein.rst`
+                - `text/prs.lines.tag`
+                - `text/prs.prop.logic`
+                - `text/raptorfec`
+                - `text/rfc822-headers`
+                - `text/rtf`
+                - `text/rtp-enc-aescm128`
+                - `text/rtploopback`
+                - `text/rtx`
+                - `text/sgml`
+                - `text/shaclc`
+                - `text/shex`
+                - `text/spdx`
+                - `text/strings`
+                - `text/t140`
+                - `text/tab-separated-values`
+                - `text/texmacs`
+                - `text/troff`
+                - `text/tsv`
+                - `text/tsx`
+                - `text/turtle`
+                - `text/ulpfec`
+                - `text/uri-list`
+                - `text/vcard`
+                - `text/vnd.DMClientScript`
+                - `text/vnd.IPTC.NITF`
+                - `text/vnd.IPTC.NewsML`
+                - `text/vnd.a`
+                - `text/vnd.abc`
+                - `text/vnd.ascii-art`
+                - `text/vnd.curl`
+                - `text/vnd.debian.copyright`
+                - `text/vnd.dvb.subtitle`
+                - `text/vnd.esmertec.theme-descriptor`
+                - `text/vnd.exchangeable`
+                - `text/vnd.familysearch.gedcom`
+                - `text/vnd.ficlab.flt`
+                - `text/vnd.fly`
+                - `text/vnd.fmi.flexstor`
+                - `text/vnd.gml`
+                - `text/vnd.graphviz`
+                - `text/vnd.hans`
+                - `text/vnd.hgl`
+                - `text/vnd.in3d.3dml`
+                - `text/vnd.in3d.spot`
+                - `text/vnd.latex-z`
+                - `text/vnd.motorola.reflex`
+                - `text/vnd.ms-mediapackage`
+                - `text/vnd.net2phone.commcenter.command`
+                - `text/vnd.radisys.msml-basic-layout`
+                - `text/vnd.senx.warpscript`
+                - `text/vnd.sosi`
+                - `text/vnd.sun.j2me.app-descriptor`
+                - `text/vnd.trolltech.linguist`
+                - `text/vnd.wap.si`
+                - `text/vnd.wap.sl`
+                - `text/vnd.wap.wml`
+                - `text/vnd.wap.wmlscript`
+                - `text/vtt`
+                - `text/wgsl`
+                - `text/x-asm`
+                - `text/x-bibtex`
+                - `text/x-boo`
+                - `text/x-c`
+                - `text/x-c++hdr`
+                - `text/x-c++src`
+                - `text/x-cassandra`
+                - `text/x-chdr`
+                - `text/x-coffeescript`
+                - `text/x-component`
+                - `text/x-csh`
+                - `text/x-csharp`
+                - `text/x-csrc`
+                - `text/x-cuda`
+                - `text/x-d`
+                - `text/x-diff`
+                - `text/x-dsrc`
+                - `text/x-emacs-lisp`
+                - `text/x-erlang`
+                - `text/x-gff3`
+                - `text/x-go`
+                - `text/x-haskell`
+                - `text/x-java`
+                - `text/x-java-properties`
+                - `text/x-java-source`
+                - `text/x-kotlin`
+                - `text/x-lilypond`
+                - `text/x-lisp`
+                - `text/x-literate-haskell`
+                - `text/x-lua`
+                - `text/x-moc`
+                - `text/x-objcsrc`
+                - `text/x-pascal`
+                - `text/x-pcs-gcd`
+                - `text/x-perl`
+                - `text/x-perl-script`
+                - `text/x-python`
+                - `text/x-python-script`
+                - `text/x-r-markdown`
+                - `text/x-rsrc`
+                - `text/x-rst`
+                - `text/x-ruby-script`
+                - `text/x-rust`
+                - `text/x-sass`
+                - `text/x-scala`
+                - `text/x-scheme`
+                - `text/x-script.python`
+                - `text/x-scss`
+                - `text/x-setext`
+                - `text/x-sfv`
+                - `text/x-sh`
+                - `text/x-siesta`
+                - `text/x-sos`
+                - `text/x-sql`
+                - `text/x-swift`
+                - `text/x-tcl`
+                - `text/x-tex`
+                - `text/x-vbasic`
+                - `text/x-vcalendar`
+                - `text/xml`
+                - `text/xml-dtd`
+                - `text/xml-external-parsed-entity`
+                - `text/yaml`
+
+            === "LAB"
+
+                === "Let's build a quick Gemini Retrieval Augmented Generation ("RAG") through the File Search tool application"
+
+                    The File Search capability in the Gemini API is a fully managed Retrieval-Augmented Generation (RAG) feature. It takes care of storing your files, splitting them into chunks, generating embeddings, and automatically adding the most relevant context to your prompts.
+
+                    You might wonder if this comes with a high cost. Actually, it doesn’t. File storage and on-demand embedding generation during queries are free. You’re only charged for the initial indexing of your content, at a flat rate of $0.15 per 1 million tokens, based on the embeddings created.
+
+                    In this tutorial, we’ll go through the end-to-end workflow of using File Search with a Python script. You’ll learn how to:
+
+                    1. Create a File Search store
+
+                    2. Look up an existing store by its display name
+
+                    3. Upload files into the store
+
+                    4. Use advanced upload options such as custom chunking and metadata
+
+                    5. Run a standard RAG-style generation query
+
+                    6. Clean up by deleting the File Search store when you’re done
+
+                    !!! important
+
+                        In this section, we will be using a version of <a href="https://www.cisco.com/c/dam/en/us/td/docs/voice_ip_comm/cuipph/MPP/6800-DECT/deployment/CiscoDECT6800DeploymentGuide.pdf" target="_blank">Cisco DECT 6800 Deployment Guide</a>.  For the purposes of this lab, I've modified the original PDF by removing a few pages and saving it as a new file. 
+
+                    !!! note
+                        The PDF we are using in this lab can be downloaded from [here](./assets/static/Geminidect.pdf){:target="_blank" download="Geminidect.pdf"}</span>
+
+                    !!! important
+                        ![Warn](./assets/task1/warn.png)
+
+                    * Open Google Colab and create a new notebook. Click on "File" > "New notebook". Please refer to the [following section](Task1.md) to create Google Colab account.
+
+                    ![GCOLAB](./assets/task3/gcolab.png)
+
+                    * Make sure you are connected to a runtime. For this task, you can use the CPU as the runtime environment.
+
+                    ![HL_Format_run](./assets/task8a/rungc.png)
+
+                    * Within your existing Google Colab notebook navigate to the new “Secrets” section in the sidebar.
+
+                    ![HF_GT_sec](./assets/task8a/gensec.png)
+
+                    !!! important
+
+                        - If not already done, Click on “Add a new secret.” Enter the name example: GEMINI_API_KEY and value of the secret(the API key you downloaded). Note: The name is permanent once set. 
+
+                        - The list of secrets is global across all your notebooks.
+
+                        - Use the “Notebook access” toggle to grant or revoke access to a secret for each notebook.
+
+                    ![HF_GT_sec11](./assets/task5a/key.png)
+
+                    *  Let's load our PDF files into Google Colab. For this example, we can use the [modified DECT guide](./assets/static/Geminidect.pdf){:target="_blank" download="Geminidect.pdf"}
+
+                    * Within Google Colab, Click on Folder and create a new folder called "data"
+
+                    ![HL_Format_fold](./assets/task8a/fold.png)
+
+                    * Click on [...], select Upload. Make sure you choose your Geminidect.pdf file 
+
+                    ![HL_Format_fold_created](./assets/task8a/dc_created.png)
+
+                    ![HL_file_uplo](./assets/task5a/Geminidect.png)
+
+                    * First let’s install the necessary Python packages. Click "Restart Session", once the below packages are installed.
+
+                    ```py linenums="1"
+                    !pip install -U google-genai
+                    ```
+
+                    * Before we can use Gemini File Search, we need to import a few libraries that will help us authenticate, talk to the Gemini API, and manage our files.
+
+                    ```py linenums="1"
+                    from google.colab import userdata
+                    import os
+                    from google import genai
+                    import time
+                    from google.genai import types
+                    ```
+
+                    * We will now securely load our Gemini API key from Colab’s Secrets (via userdata) and storing it in an environment variable called GEMINI_API_KEY. This lets the rest of our
+                    code authenticate to the Gemini API without hard-coding the key in the notebook, which is safer and easier to manage.
+
+                    ```py linenums="1"
+                    # Grab the key from the Secrets tab and put it into an env var
+                    os.environ["GEMINI_API_KEY"] = userdata.get("GEMINI_API_KEY")
+                    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+                    ```
+
+                    * A File Search Store is a persistent container for your document chunks and embeddings. It's distinct from raw file storage and can hold gigabytes of data.
+                    
+                    ```py linenums="1"
+                    # Create the File Search store with an optional display name
+                    file_search_store = client.file_search_stores.create(
+                        config={"display_name": "Omers"})
+                    ```
+
+                    * After creating the File Search store, we’re just printing a short confirmation message so we can see that it worked. The first line prints a label, and the second line shows the store’s internal name (its unique ID used by the API) together with its human-friendly display_name, so you can easily confirm which File Search store was just created.
+
+                    ```py linenums="1"
+                    print("Created a file search store:")
+                    print(f"  {file_search_store.name} - {file_search_store.display_name}")
+                    ```
+
+                    * Will list all the File Search stores associated with our project so we can quickly verify the one we just created exists (and see any others you already had). The loop calls client.file_search_stores.list() to fetch all stores, then prints each store’s internal name (its unique identifier for the API) alongside its human-readable display_name, giving you a simple overview of everything that’s currently available.
+
+                    ```py linenums="1"
+                    # ---------- You can list all the file search stores you have to verify:
+                    print("List of file search stores:")
+                    for file_search_store in client.file_search_stores.list():
+                        print(f"  {file_search_store.name} - {file_search_store.display_name}")
+                    ```
+
+                    * Now pick one of your File Search stores(the one you created earlier) and set file_search_store_name to its full resource name (use your store’s ID here, not mine), so the rest of the lab knows which store to upload files to and query against.
+
+                    ```py linenums="1"
+                    # Pick one of your stores
+                    file_search_store_name = "fileSearchStores/omers-j6gikclff6tr"
+                    ```
+                    !!! note
+                        Change this to your own File Search store name, the one you created in the previous step.
+                    
+                    * Here we set the path to the PDF we want to index, and give it a friendly display name that will appear in File Search.
+
+                    ```py linenums="1"
+                    pdf_path = "/content/data/Geminidect.pdf" 
+                    display_name = "dect.pdf"
+                    ```
+
+                    * By default, Gemini handles chunking intelligently. However, for specific use cases you might want tighter control over how your data is split.
+                    You can define a chunkingConfig during upload to specify parameters like maxTokensPerChunk and maxOverlapTokens and customMetadata to attach key-value pairs to the document.
+
+                    ```py linenums="1"
+                    operation = client.file_search_stores.upload_to_file_search_store(
+                    file=pdf_path,                          
+                    file_search_store_name=file_search_store_name,
+                    config={
+                        "display_name": display_name,
+                        # optional:
+                        # "chunking_config": {
+                        #     "white_space_config": {
+                        #         "max_tokens_per_chunk": 200,
+                        #         "max_overlap_tokens": 20,
+                        #     }
+                        # },
+                            },
+                        )
+                        # Wait for the upload + indexing to finish
+                        while not operation.done:
+                            time.sleep(5)
+                            operation = client.operations.get(operation)
+
+                        print("Upload complete")
+                        print(operation)
+                    ```
+
+                    Here we’re uploading our PDF(Geminidect) into the selected File Search store and waiting for Gemini to finish indexing it. The upload_to_file_search_store call sends the file (with the display name we set, and optional custom chunking if you uncomment that part), and it returns a long running operation. The while loop simply polls this operation every few seconds until the upload and indexing are complete. 
+                    Once it’s done, we print a confirmation so you know your document is now ready to be used in File Search queries.
+
+                    * We’re configuring the File Search tool that the Gemini model will use. We create a Tool object with a FileSearch configuration and point it to our file_search_store_name, which tells Gemini which store (and documents) it’s allowed to search. We don’t need to manually retrieve chunks or run separate search calls, we just tell the Gemini model to use the file_search tool and point it to our store name. When the model needs more information, it will automatically search the store, pull the most relevant chunks, and ground its response on that content. The print(file_search) line simply shows the tool configuration so you can confirm everything is set up correctly.
+
+                    ```py linenums="1"
+                    file_search = types.Tool(
+                    file_search=types.FileSearch(
+                        file_search_store_names=[file_search_store_name]
+                        )
+                    )
+
+                    print(file_search)
+                    ```
+
+                    * We’re now telling Gemini to resolve the question by first querying the File Search store we configured earlier. Under the hood, the model generates a retrieval query, File Search fetches the most relevant chunks from the indexed PDF, and those chunks are injected into the model’s context before decoding the final answer.
+
+                    ```py linenums="1"
+                    response = client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents="What kind of cells does the Cisco IP DECT 6800 Phone products support?",
+                    config=types.GenerateContentConfig(
+                        tools=[file_search],
+                    ),
+                        )
+
+                        print("Model response:\n")
+                        print(response.text)
+                    ```
+
+                    !!! important
+                    
+                        You can have at most 10 File Search stores per project, so it’s a good idea to delete any stores you no longer need once you’re done with development.
+
+                        ```py linenums="1"
+                        
+                        print("Deleting File Search store...")
+
+                        client.file_search_stores.delete(
+                            file_search_store_name=file_search_store_name,
+                            force=True,  # force deletion even if there are files attached
+                        )
+
+                        print("File Search store deleted.")
+                        ```
+
+                    <b>SUMMARY</b><br>
+                    You’ve effectively built a complete, managed RAG pipeline using Gemini File Search. You created a File Search store, uploaded and indexed a PDF, waited for the embeddings and index to be built, then wired that store into a file_search tool and attached it to a generate_content call. From that point on, Gemini handled retrieval for you, it converted your question into an embedding, semantically searched your File Search store, pulled the most relevant chunks, and grounded its answer on your document without you ever manually fetching or passing chunks yourself. This is exactly what the File Search tool is designed for a simple, integrated way to ground Gemini on your own data so you can focus on prompts and product logic instead of building and maintaining your own vector database and RAG stack.
+

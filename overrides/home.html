@@ -1,0 +1,865 @@
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+<style>
+    /* ── Reset ── */
+    .md-container { background: #0b1120; }
+    .md-main { flex-grow: 0; height: 0; }
+    .md-main__inner { display: flex; height: 100%; }
+    .md-header { display: none; }
+    .md-tabs { display: none; }
+
+    /* ── Hero ── */
+    .hero {
+        position: relative;
+        min-height: 100vh;
+        background: #0b1120;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ── Top bar ── */
+    .top-bar {
+        position: relative;
+        z-index: 10;
+        padding: 1.8rem 3rem 0;
+    }
+
+    .top-bar img {
+        height: 72px;
+        filter: brightness(1.15);
+    }
+
+    /* ── Hero layout: two columns ── */
+    .hero-split {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        padding: 0 3rem 1.5rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-left {
+        flex: 1;
+        max-width: 580px;
+        padding-right: 3rem;
+    }
+
+    .hero-right {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    /* ── Right-side visual: ASCII terminal ── */
+    .ascii-block {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 0;
+        width: 100%;
+        max-width: 560px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .ascii-titlebar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .ascii-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .ascii-dot.r { background: #ff5f57; }
+    .ascii-dot.y { background: #febc2e; }
+    .ascii-dot.g { background: #28c840; }
+
+    .ascii-titlebar span {
+        margin-left: auto;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.2);
+        font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+        letter-spacing: 0.05em;
+    }
+
+    .ascii-body {
+        padding: 1.5rem 1.5rem 2rem;
+        font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        font-size: 0.6rem;
+        line-height: 1.45;
+        color: rgba(255, 255, 255, 0.2);
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .ascii-body .c-blue { color: #3b9eff; }
+    .ascii-body .c-purple { color: #818cf8; }
+    .ascii-body .c-green { color: #34d399; }
+    .ascii-body .c-amber { color: #fbbf24; }
+    .ascii-body .c-pink { color: #f472b6; }
+    .ascii-body .c-cyan { color: #22d3ee; }
+    .ascii-body .c-dim { color: rgba(255, 255, 255, 0.1); }
+    .ascii-body .c-white { color: rgba(255, 255, 255, 0.7); }
+    .ascii-body .c-bright { color: rgba(255, 255, 255, 0.9); }
+
+    .ascii-cursor {
+        display: inline-block;
+        width: 7px;
+        height: 14px;
+        background: #3b9eff;
+        animation: blink 1.2s step-end infinite;
+        vertical-align: middle;
+        margin-left: 2px;
+    }
+
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+
+    /* ── Split-flap display ── */
+    .flap-board {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        margin: 0.3rem 0;
+        padding: 0.5rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .flap-row {
+        display: flex;
+        align-items: center;
+        gap: 0;
+    }
+
+    .flap-char {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 2px;
+        padding: 0.15rem 0.2rem;
+        margin: 0 0.5px;
+        min-width: 0.65em;
+        text-align: center;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 0.65rem;
+        line-height: 1.3;
+        color: rgba(255, 255, 255, 0.8);
+        opacity: 0;
+        animation: flipIn 0.08s ease forwards;
+        position: relative;
+    }
+
+    .flap-char.space {
+        background: none;
+        border: none;
+        min-width: 0.3em;
+    }
+
+    .flap-check {
+        color: #34d399;
+        margin-right: 0.3rem;
+        opacity: 0;
+        animation: flipIn 0.08s ease forwards;
+    }
+
+    @keyframes flipIn {
+        0%   { opacity: 0; transform: rotateX(90deg); }
+        60%  { transform: rotateX(-10deg); }
+        100% { opacity: 1; transform: rotateX(0deg); }
+    }
+
+    /* ── Hero text ── */
+    .hero-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #3b9eff;
+        white-space: nowrap;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4.5vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.15;
+        color: #fff;
+        margin: 0 0 1.2rem;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+        display: block;
+        color: rgba(255, 255, 255, 0.35);
+        font-weight: 600;
+        font-size: 0.65em;
+        letter-spacing: 0;
+        margin-top: 0.4rem;
+    }
+
+    .hero-rule {
+        width: 48px;
+        height: 3px;
+        background: linear-gradient(90deg, #3b9eff, #6366f1);
+        border: none;
+        border-radius: 2px;
+        margin: 0 0 1.5rem;
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.45);
+        max-width: 480px;
+        margin: 0 0 2.2rem;
+    }
+
+    .hero-desc strong {
+        color: rgba(255,255,255,0.8);
+    }
+
+    /* ── Buttons ── */
+    .hero-btns {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.8rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-radius: 8px;
+        text-decoration: none !important;
+        transition: all 0.25s ease;
+    }
+
+    .btn-start {
+        background: #3b9eff;
+        color: #fff !important;
+        box-shadow: 0 1px 12px rgba(59, 158, 255, 0.2);
+    }
+
+    .btn-start:hover {
+        background: #2b8bee;
+        box-shadow: 0 4px 20px rgba(59, 158, 255, 0.3);
+        transform: translateY(-1px);
+    }
+
+    .btn-outline {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.65) !important;
+    }
+
+    .btn-outline:hover {
+        border-color: rgba(255,255,255,0.25);
+        color: #fff !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── Scroll hint ── */
+    .scroll-hint {
+        text-align: center;
+        padding: 0 0 0.5rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .scroll-hint a {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none !important;
+        color: rgba(255,255,255,0.3);
+        transition: color 0.3s;
+    }
+
+    .scroll-hint a:hover {
+        color: #3b9eff;
+    }
+
+    .scroll-hint span {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .scroll-chevron {
+        animation: bounceDown 1.8s ease infinite;
+    }
+
+    @keyframes bounceDown {
+        0%, 100% { transform: translateY(0); opacity: 0.4; }
+        50% { transform: translateY(6px); opacity: 1; }
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
+        margin: 0 3rem;
+    }
+
+    /* ── Modules section ── */
+    .modules-section {
+        background: #0b1120;
+        padding: 4rem 3rem 5rem;
+        position: relative;
+    }
+
+    .modules-header {
+        margin-bottom: 0.5rem;
+    }
+
+    .modules-header h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+    }
+
+    .modules-meta {
+        color: rgba(255,255,255,0.3);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        width: 100%;
+    }
+
+    @media screen and (min-width: 72em) {
+        .modules-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media screen and (min-width: 90em) {
+        .modules-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    /* ── Module card ── */
+    .mod-card {
+        background: rgba(255,255,255,0.025);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 14px;
+        padding: 1.6rem 1.8rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+        display: block;
+        cursor: pointer;
+    }
+
+    .mod-card::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .mod-card:hover {
+        background: rgba(255,255,255,0.05);
+        border-color: rgba(255,255,255,0.1);
+        transform: translateY(-2px);
+    }
+
+    .mod-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.9rem;
+    }
+
+    .mod-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.75rem;
+        border-radius: 50px;
+        color: #fff;
+    }
+
+    .mod-card h3 {
+        font-size: 1.05rem;
+        font-weight: 650;
+        color: #fff;
+        margin: 0 0 0.5rem;
+        line-height: 1.35;
+    }
+
+    .mod-card p {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.35);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* card color variants */
+    .mod-card.c1::before { background: #10b981; }
+    .mod-card.c1 .mod-badge { background: #10b981; }
+
+    .mod-card.c2::before { background: #3b82f6; }
+    .mod-card.c2 .mod-badge { background: #3b82f6; }
+
+    .mod-card.c3::before { background: #8b5cf6; }
+    .mod-card.c3 .mod-badge { background: #8b5cf6; }
+
+    .mod-card.c4::before { background: #f59e0b; }
+    .mod-card.c4 .mod-badge { background: #f59e0b; }
+
+    .mod-card.c5::before { background: #ec4899; }
+    .mod-card.c5 .mod-badge { background: #ec4899; }
+
+    .mod-card.c6::before { background: #06b6d4; }
+    .mod-card.c6 .mod-badge { background: #06b6d4; }
+
+    .mod-card.c7::before { background: #6366f1; }
+    .mod-card.c7 .mod-badge { background: #6366f1; }
+
+    .mod-card.c8::before { background: #f43f5e; }
+    .mod-card.c8 .mod-badge { background: #f43f5e; }
+
+    /* ── Footer ── */
+    .site-footer {
+        background: #080d1a;
+        border-top: 1px solid rgba(255,255,255,0.04);
+        padding: 1.5rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .footer-name {
+        font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.45);
+        letter-spacing: 0.05em;
+    }
+
+    .footer-name span { color: #3b9eff; }
+
+    .footer-sep {
+        width: 1px;
+        height: 18px;
+        background: rgba(255,255,255,0.1);
+    }
+
+    .footer-icons {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .footer-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        color: rgba(255,255,255,0.3);
+        border-radius: 50%;
+        transition: all 0.25s ease;
+        text-decoration: none !important;
+    }
+
+    .footer-icons a:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+    }
+
+    .footer-icons a.linkedin:hover { color: #0a66c2; }
+    .footer-icons a.email:hover { color: #3b9eff; }
+
+    /* ── Webex Help FAB ── */
+    .help-fab {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 999;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 1.2rem;
+        background: rgba(11, 17, 32, 0.95);
+        border: 1px solid rgba(59, 158, 255, 0.3);
+        border-radius: 10px;
+        color: #3b9eff;
+        font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 158, 255, 0.1);
+        transition: all 0.3s ease;
+        animation: fabPulse 3s ease-in-out infinite;
+    }
+
+    .help-fab:hover {
+        border-color: rgba(59, 158, 255, 0.6);
+        color: #fff;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 25px rgba(59, 158, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .help-fab .fab-prompt {
+        color: #34d399;
+    }
+
+    .help-fab .fab-cursor {
+        display: inline-block;
+        width: 6px;
+        height: 13px;
+        background: #3b9eff;
+        animation: blink 1.2s step-end infinite;
+        vertical-align: middle;
+    }
+
+    @keyframes fabPulse {
+        0%, 100% { border-color: rgba(59, 158, 255, 0.3); }
+        50% { border-color: rgba(59, 158, 255, 0.5); }
+    }
+
+    /* ── Responsive ── */
+    @media screen and (max-width: 48em) {
+        .hero-split { flex-direction: column; padding: 2rem 1.5rem 3rem; }
+        .hero-left { max-width: 100%; padding-right: 0; margin-bottom: 2rem; }
+        .hero-right { display: none; }
+        .top-bar { padding: 1.5rem 1.5rem 0; }
+        .modules-section { padding: 3rem 1.5rem 4rem; }
+        .modules-grid { grid-template-columns: 1fr; }
+        .section-divider { margin: 0 1.5rem; }
+        .site-footer { padding: 2rem 1.5rem; }
+    }
+
+    @media screen and (min-width: 48em) and (max-width: 60em) {
+        .hero-right { display: none; }
+        .hero-split { padding: 2rem 2rem 3rem; }
+        .hero-left { max-width: 100%; padding-right: 0; }
+    }
+
+    @media screen and (min-width: 60em) {
+        .md-sidebar--secondary { display: none; }
+    }
+
+    @media screen and (min-width: 76.25em) {
+        .md-sidebar--primary { display: none; }
+    }
+</style>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+    <div class="top-bar">
+        <img src="assets/logo.png" alt="Cisco" draggable="false">
+        <div class="hero-eyebrow">Collaboration &middot; Technical Marketing Engineering</div>
+    </div>
+
+    <div class="hero-split">
+        <div class="hero-left">
+
+            <h1 class="hero-title">
+                AI by Design
+                <span>Frameworks, Tools &amp; Innovation</span>
+            </h1>
+
+            <hr class="hero-rule">
+
+            <p class="hero-desc">
+                A hands-on lab exploring <strong>Generative AI</strong> and
+                <strong>Collaboration</strong> integration &mdash; from tokenization
+                and embeddings to RAG, multimodal AI, and beyond.
+            </p>
+
+            <div class="hero-btns">
+                <a href="overview/" class="btn btn-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Start the Lab
+                </a>
+                <a href="Task1/" class="btn btn-outline">
+                    Pre-Requisites
+                </a>
+            </div>
+            <div class="scroll-hint" style="text-align:center; padding:1.2rem 0 0;">
+                <a href="#lab-modules">
+                    <span>11 Lab Modules Below</span>
+                    <svg class="scroll-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-right">
+            <div class="ascii-block">
+                <div class="ascii-titlebar">
+                    <div class="ascii-dot r"></div>
+                    <div class="ascii-dot y"></div>
+                    <div class="ascii-dot g"></div>
+                    <span>ai_by_design.py</span>
+                </div>
+                <div class="ascii-body">
+<span class="c-blue"> █████╗ ██╗</span>
+<span class="c-blue">██╔══██╗██║</span>
+<span class="c-blue">███████║██║</span>
+<span class="c-blue">██╔══██║██║</span>
+<span class="c-blue">██║  ██║██║</span>
+<span class="c-blue">╚═╝  ╚═╝╚═╝</span>
+<span class="c-purple">██████╗ ██╗   ██╗</span>
+<span class="c-purple">██╔══██╗╚██╗ ██╔╝</span>
+<span class="c-purple">██████╔╝ ╚████╔╝</span>
+<span class="c-purple">██╔══██╗  ╚██╔╝</span>
+<span class="c-purple">██████╔╝   ██║</span>
+<span class="c-purple">╚═════╝    ╚═╝</span>
+<span class="c-cyan">██████╗ ███████╗███████╗██╗ ██████╗ ███╗  ██╗</span>
+<span class="c-cyan">██╔══██╗██╔════╝██╔════╝██║██╔════╝ ████╗ ██║</span>
+<span class="c-cyan">██║  ██║█████╗  ███████╗██║██║  ██╗ ██╔██╗██║</span>
+<span class="c-cyan">██║  ██║██╔══╝  ╚════██║██║██║  ╚██╗██║╚████║</span>
+<span class="c-cyan">██████╔╝███████╗███████║██║╚██████╔╝██║ ╚███║</span>
+<span class="c-cyan">╚═════╝ ╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚══╝</span>
+
+<span class="c-green">$</span> <span class="c-white">python lab.py --init</span>
+
+<span class="c-dim">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</span>
+<span class="c-dim">&#9474;</span> <span class="c-amber">MODEL</span>    <span class="c-white">Large Language Model</span>   <span class="c-dim">&#9474;</span>
+<span class="c-dim">&#9474;</span> <span class="c-amber">EMBED</span>    <span class="c-white">Embedding Model</span>        <span class="c-dim">&#9474;</span>
+<span class="c-dim">&#9474;</span> <span class="c-amber">VECTOR</span>   <span class="c-white">Vector Database</span>        <span class="c-dim">&#9474;</span>
+<span class="c-dim">&#9474;</span> <span class="c-amber">MODE</span>     <span class="c-cyan">RAG + Multimodal</span>       <span class="c-dim">&#9474;</span>
+<span class="c-dim">&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</span>
+
+<div class="flap-board" id="flapBoard"></div>
+
+<span class="c-green">$</span> <span class="c-pink">Ready to explore</span> <span class="ascii-cursor"></span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════ MODULES ════════ -->
+<section class="modules-section" id="lab-modules">
+    <div class="modules-header">
+        <h2>Lab Modules</h2>
+    </div>
+    <p class="modules-meta">11 modules &middot; Hands-on AI across the full stack</p>
+
+    <div class="modules-grid">
+
+        <a href="Task1/" class="mod-card c1">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 1</span>
+            </div>
+            <h3>Pre-Requisites &amp; Setup</h3>
+            <p>Set up your lab environment, API keys, Python tooling, and verify connectivity.</p>
+        </a>
+
+        <a href="Task2/" class="mod-card c2">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 2</span>
+            </div>
+            <h3>AI/ML Revolution Unveiled</h3>
+            <p>Explore the foundations of AI and machine learning that power modern GenAI systems.</p>
+        </a>
+
+        <a href="Task3/" class="mod-card c3">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 3</span>
+            </div>
+            <h3>Tokenization</h3>
+            <p>Understand how large language models break text into tokens and process language.</p>
+        </a>
+
+        <a href="Task4/" class="mod-card c4">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 4</span>
+            </div>
+            <h3>Embeddings &amp; Vector Database</h3>
+            <p>Represent meaning as vectors, build a vector store, and perform semantic search.</p>
+        </a>
+
+        <a href="Task4a/" class="mod-card c5">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 5</span>
+            </div>
+            <h3>Gemini Embedding 2: Multimodal Retrieval</h3>
+            <p>Explore Google's latest embedding models and multimodal retrieval techniques.</p>
+        </a>
+
+        <a href="Task5/" class="mod-card c6">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 6</span>
+            </div>
+            <h3>Context Windows &amp; RAG</h3>
+            <p>Build Retrieval Augmented Generation pipelines to ground LLM responses with real data.</p>
+        </a>
+
+        <a href="Task5a/" class="mod-card c7">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 7</span>
+            </div>
+            <h3>RAG through File Search Tool</h3>
+            <p>Use Gemini's managed File Search to build RAG pipelines without managing your own vector database.</p>
+        </a>
+
+        <a href="Task6/" class="mod-card c8">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 8</span>
+            </div>
+            <h3>Multimodal RAG</h3>
+            <p>Go beyond text with vision models, image analysis, and multimodal retrieval.</p>
+        </a>
+
+        <a href="Task9/" class="mod-card c1">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 9</span>
+            </div>
+            <h3>GenAI Frameworks</h3>
+            <p>Explore popular GenAI frameworks for building AI-powered applications at scale.</p>
+        </a>
+
+        <a href="Task10/" class="mod-card c2">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 10</span>
+            </div>
+            <h3>Groq &amp; Open Source Models</h3>
+            <p>Use Groq's high-speed LPU engine with open-source models like GPT-OSS for cost-free inference.</p>
+        </a>
+
+        <a href="Task6b/" class="mod-card c3">
+            <div class="mod-card-top">
+                <span class="mod-badge">Module 11</span>
+            </div>
+            <h3>Hugging Face &amp; OpenAI-Compatible APIs</h3>
+            <p>Use Hugging Face models with OpenAI-compatible endpoints for flexible integration.</p>
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}
+<footer class="site-footer">
+    <div class="footer-name"><span>&lt;</span> Omer Ilyas <span>/&gt;</span></div>
+    <div class="footer-sep"></div>
+    <div class="footer-icons">
+        <a href="mailto:oilyas@cisco.com" class="email" title="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/omerilyas4ccie/" target="_blank" class="linkedin" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+    </div>
+<a href="webexteams://im?email=oilyas@cisco.com" class="help-fab" title="Message me on Webex">
+    <span class="fab-prompt">$</span> ask_help<span class="fab-cursor"></span>
+</a>
+</footer>
+
+<script>
+(function() {
+    const messages = [
+        "Tokenizer loaded",
+        "Embeddings ready",
+        "Vector store connected",
+        "GenAI pipeline active"
+    ];
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .-+&";
+    const board = document.getElementById("flapBoard");
+    if (!board) return;
+
+    let currentIndex = 0;
+    let prevText = "";
+
+    function flipTo(text) {
+        board.innerHTML = "";
+        const row = document.createElement("div");
+        row.className = "flap-row";
+
+        // add check mark
+        const check = document.createElement("span");
+        check.className = "flap-check";
+        check.textContent = "\u2714";
+        check.style.animationDelay = (text.length * 30) + "ms";
+        row.appendChild(check);
+
+        const padded = text.toUpperCase().padEnd(24, " ");
+        const prevPad = prevText.toUpperCase().padEnd(24, " ");
+
+        for (let i = 0; i < padded.length; i++) {
+            const span = document.createElement("span");
+            const targetChar = padded[i];
+            span.className = "flap-char" + (targetChar === " " ? " space" : "");
+            span.textContent = targetChar;
+
+            // chars that differ from prev get the flip + scramble
+            if (prevPad[i] !== targetChar && targetChar !== " ") {
+                const delay = i * 30;
+                span.style.animationDelay = delay + "ms";
+
+                // scramble effect
+                let scrambleCount = 0;
+                const maxScrambles = 4 + Math.floor(Math.random() * 4);
+                const scrambleStart = delay;
+                const iv = setInterval(() => {
+                    if (scrambleCount >= maxScrambles) {
+                        span.textContent = targetChar;
+                        clearInterval(iv);
+                        return;
+                    }
+                    span.textContent = chars[Math.floor(Math.random() * chars.length)];
+                    scrambleCount++;
+                }, 50);
+            } else {
+                span.style.animationDelay = "0ms";
+                span.style.opacity = "1";
+                span.style.transform = "none";
+            }
+
+            row.appendChild(span);
+        }
+        board.appendChild(row);
+        prevText = text;
+    }
+
+    // initial delay then start cycling
+    setTimeout(() => {
+        flipTo(messages[0]);
+        currentIndex = 1;
+        setInterval(() => {
+            flipTo(messages[currentIndex]);
+            currentIndex = (currentIndex + 1) % messages.length;
+        }, 2500);
+    }, 800);
+})();
+</script>
+{% endblock %}

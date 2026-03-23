@@ -1,0 +1,224 @@
+<div class="gem2-wrapper">
+<style>
+.gem2-wrapper {
+  background: #0a0e1a;
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.gem2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+.gem2-title {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+/* Left: Inputs */
+.gem2-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+.gem2-input {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  animation: inputPulse 3s ease-in-out infinite;
+  position: relative;
+}
+.gem2-input:nth-child(1) { animation-delay: 0s; }
+.gem2-input:nth-child(2) { animation-delay: 0.4s; }
+.gem2-input:nth-child(3) { animation-delay: 0.8s; }
+.gem2-input:nth-child(4) { animation-delay: 1.2s; }
+.gem2-input:nth-child(5) { animation-delay: 1.6s; }
+.gem2-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.gem2-dot.text { background: #818cf8; box-shadow: 0 0 8px #818cf8; }
+.gem2-dot.image { background: #34d399; box-shadow: 0 0 8px #34d399; }
+.gem2-dot.video { background: #f472b6; box-shadow: 0 0 8px #f472b6; }
+.gem2-dot.audio { background: #fbbf24; box-shadow: 0 0 8px #fbbf24; }
+.gem2-dot.docs { background: #3b9eff; box-shadow: 0 0 8px #3b9eff; }
+@keyframes inputPulse {
+  0%, 100% { border-color: rgba(255,255,255,0.08); transform: translateX(0); }
+  50% { border-color: rgba(255,255,255,0.18); transform: translateX(4px); }
+}
+/* Flow arrows */
+.gem2-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+.gem2-particle {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  animation: particleFlow 2s ease-in-out infinite;
+}
+.gem2-particle:nth-child(1) { animation-delay: 0s; background: #818cf8; }
+.gem2-particle:nth-child(2) { animation-delay: 0.3s; background: #34d399; }
+.gem2-particle:nth-child(3) { animation-delay: 0.6s; background: #f472b6; }
+.gem2-particle:nth-child(4) { animation-delay: 0.9s; background: #fbbf24; }
+.gem2-particle:nth-child(5) { animation-delay: 1.2s; background: #3b9eff; }
+@keyframes particleFlow {
+  0% { opacity: 0; transform: translateX(-10px); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(10px); }
+}
+/* Center: Model */
+.gem2-model {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  flex-shrink: 0;
+  position: relative;
+  animation: modelGlow 3s ease-in-out infinite;
+}
+.gem2-model-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #818cf8;
+  letter-spacing: 0.05em;
+}
+.gem2-model-sub {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 0.2rem;
+}
+@keyframes modelGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(99,102,241,0.1); }
+  50% { box-shadow: 0 0 25px rgba(99,102,241,0.25); }
+}
+/* Right: Embedding space */
+.gem2-space {
+  width: 160px;
+  height: 140px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.gem2-space-label {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.gem2-space-dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  animation: spaceDrift 4s ease-in-out infinite alternate;
+}
+.gem2-space-dot:nth-child(1) { background: #818cf8; top: 20%; left: 30%; animation-delay: 0s; }
+.gem2-space-dot:nth-child(2) { background: #818cf8; top: 35%; left: 55%; animation-delay: 0.5s; }
+.gem2-space-dot:nth-child(3) { background: #34d399; top: 50%; left: 25%; animation-delay: 1s; }
+.gem2-space-dot:nth-child(4) { background: #34d399; top: 25%; left: 70%; animation-delay: 1.5s; }
+.gem2-space-dot:nth-child(5) { background: #f472b6; top: 60%; left: 60%; animation-delay: 0.3s; }
+.gem2-space-dot:nth-child(6) { background: #fbbf24; top: 40%; left: 40%; animation-delay: 0.8s; }
+.gem2-space-dot:nth-child(7) { background: #3b9eff; top: 70%; left: 45%; animation-delay: 1.3s; }
+.gem2-space-dot:nth-child(8) { background: #fbbf24; top: 15%; left: 50%; animation-delay: 0.6s; }
+.gem2-space-dot:nth-child(9) { background: #f472b6; top: 55%; left: 15%; animation-delay: 1.1s; }
+.gem2-space-dot:nth-child(10) { background: #3b9eff; top: 30%; left: 80%; animation-delay: 0.4s; }
+@keyframes spaceDrift {
+  0% { transform: translate(0, 0); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: translate(6px, -4px); opacity: 0.7; }
+}
+/* Crosshair lines in space */
+.gem2-space::before, .gem2-space::after {
+  content: '';
+  position: absolute;
+  background: rgba(255,255,255,0.04);
+}
+.gem2-space::before { width: 1px; height: 100%; left: 50%; top: 0; }
+.gem2-space::after { width: 100%; height: 1px; top: 50%; left: 0; }
+/* Responsive */
+@media (max-width: 700px) {
+  .gem2 { flex-direction: column; }
+  .gem2-flow { flex-direction: row; }
+  .gem2-space { width: 100%; height: 120px; }
+}
+</style>
+
+<div class="gem2-title">Multimodal Input</div>
+<div class="gem2">
+  <div class="gem2-inputs">
+    <div class="gem2-input"><span class="gem2-dot text"></span> Text</div>
+    <div class="gem2-input"><span class="gem2-dot image"></span> Image</div>
+    <div class="gem2-input"><span class="gem2-dot video"></span> Video</div>
+    <div class="gem2-input"><span class="gem2-dot audio"></span> Audio</div>
+    <div class="gem2-input"><span class="gem2-dot docs"></span> Documents</div>
+  </div>
+  <div class="gem2-flow">
+    <div class="gem2-particle"></div>
+    <div class="gem2-particle"></div>
+    <div class="gem2-particle"></div>
+    <div class="gem2-particle"></div>
+    <div class="gem2-particle"></div>
+  </div>
+  <div class="gem2-model">
+    <div class="gem2-model-label">Embedding</div>
+    <div class="gem2-model-label">Model</div>
+    <div class="gem2-model-sub">Gemini Embedding 2</div>
+  </div>
+  <div class="gem2-flow">
+    <div class="gem2-particle"></div>
+    <div class="gem2-particle"></div>
+    <div class="gem2-particle"></div>
+    <div class="gem2-particle"></div>
+    <div class="gem2-particle"></div>
+  </div>
+  <div class="gem2-space">
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <div class="gem2-space-dot"></div>
+    <span class="gem2-space-label">Unified Embedding Space</span>
+  </div>
+</div>
+</div>

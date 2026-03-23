@@ -1,0 +1,1412 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Webex and GenAI">
+      
+      
+        <meta name="author" content="Omer Ilyas">
+      
+      
+      
+        <link rel="prev" href="../overview/">
+      
+      
+        <link rel="next" href="../Task2/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.2.0-b3">
+    
+    
+      
+        <title>Module 1 - Pre-Requisites and Setup - AI by Design</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.83068744.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pre-requisites" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI by Design" class="md-header__button md-logo" aria-label="AI by Design" data-md-component="logo">
+      
+  <img src="../assets/terminal-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI by Design
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 1 - Pre-Requisites and Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI by Design" class="md-nav__button md-logo" aria-label="AI by Design" data-md-component="logo">
+      
+  <img src="../assets/terminal-logo.svg" alt="logo">
+
+    </a>
+    AI by Design
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lab
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Module 1 - Pre-Requisites and Setup
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 2 - AI/ML Revolution Unveiled
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 3 - Tokenization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 4 - Embeddings and Vector Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task4a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 5 - Gemini Embedding 2 Multimodal Retrieval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 6 - Context Windows and RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task5a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 7 - RAG through File Search Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 8 - Multimodal RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 9 - GenAI Frameworks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 10 - Groq and Open Source Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task6b/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 11 - Hugging Face with OpenAI-Compatible APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conclusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+<div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const footerNav = document.querySelector('.md-footer__inner');
+      if (footerNav) {
+        footerNav.style.display = 'none';
+      }
+    });
+  </script>
+</div>
+
+<h1 id="pre-requisites">Pre-Requisites</h1>
+<details class="blank" open="open">
+<summary>🔐 Webex - Getting Bearer Tokens and Room ID</summary>
+<details class="info">
+<summary>Introduction</summary>
+<p>To interact with Webex programmatically such as sending messages, you’ll need to authenticate using a Webex API access token (Bearer token).
+This token will act like a digital key that allows your script to securely access your Webex account and perform actions on your behalf (like sending messages, listing spaces, etc.). Without it, any API call to Webex will be rejected. You can find more information on the Webex Developer Portal <a href="https://developer.webex.com" target="_blank">here.</a></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">1. Steps to Obtain and Use Your Webex Token</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Log in to the <a href="https://developer.webex.com" target="_blank">Webex Developer Portal</a> and click on Log in.</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember to use the specific account that you selected for your API keys e.g. <strong>tmedemouserX@gmail.com</strong>, where <strong>X</strong> is the number you were assigned (e.g., 1, 2, etc.). However, since we will be logging into Webex (not Gmail), please replace the domain with <strong>@boldbetz.com</strong>.</p>
+<p><strong>Example:</strong> 👉 <strong><code>tmedemouserX@boldbetz.com</code></strong> The password for your assigned account is provided in your <strong>.txt file</strong>.</p>
+</div>
+<ul>
+<li>After logging in, click on your profile picture (top-right corner).  Under <strong>"Bearer"</strong>, copy the displayed token as this is the one you’ll use in the upcoming tasks.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Save to Key Vault</p>
+<p>Click the <strong><code>$ keys</code></strong> button (bottom-left of this page) to open the Key Vault panel and paste your <strong>Webex Bearer Token</strong> there. It will be available on all lab pages.</p>
+</div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/wbx2.png" data-title="Wbx2" data-desc-position="top"><img alt="Wbx2" src="../assets/task1/wbx2.png"></a></p>
+<ul>
+<li>Use your assigned tmedemouserX@boldbetz.com account to log in to the Webex App that is pre-installed on your laptop.</li>
+</ul>
+<details class="note">
+<summary>Note</summary>
+<p>Remember to use the specific account that you selected for your API keys e.g.tmedemouserX@gmail.com, where X is the number you were assigned (e.g., 1, 2, etc.). </p>
+</details>
+<ul>
+<li>Once logged in, create a new Webex Space and name it something like "Webex AI Lab".</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/wbx3.png" data-title="Wbx3" data-desc-position="top"><img alt="Wbx3" src="../assets/task1/wbx3.png"></a></p>
+<ul>
+<li>
+<p>After the space is created, we will retrieve its  ID, this will be used in a later step in the lab guide (Task 6a).</p>
+</li>
+<li>
+<p>Now, go back to the <a href="https://developer.webex.com" target="_blank">Webex Developer Portal</a>l and log in again.</p>
+</li>
+<li>
+<p>Click on Documentation → Webex Messaging.</p>
+</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/wbx4.png" data-title="Wbx4" data-desc-position="top"><img alt="Wbx4" src="../assets/task1/wbx4.png"></a></p>
+<ul>
+<li>Select All APIs, then navigate to Rooms → List Rooms, and press Run.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/wbx5.png" data-title="Wbx5" data-desc-position="top"><img alt="Wbx5" src="../assets/task1/wbx5.png"></a></p>
+<ul>
+<li>In the response, you will find a list of rooms associated with your account. Locate the room you just created (e.g., "Webex AI Lab") and copy its corresponding ID. This will be used in a later step in the lab guide (Task 6a).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Save to Key Vault</p>
+<p>Open the <strong><code>$ keys</code></strong> panel (bottom-left) and paste your <strong>Webex Room ID</strong> there for easy access later.</p>
+</div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/wbx6.png" data-title="Wbx6" data-desc-position="top"><img alt="Wbx6" src="../assets/task1/wbx6.png"></a></p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<h1 id="pre-requisites-and-setup-optional-steps">Pre-Requisites and Setup (Optional Steps)</h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following steps are provided for your information only. Since you've already received the necessary API keys (which were pre-generated and provided to you as a .txt file), there's no need to follow these instructions during the lab. However, if you're interested in learning how to create the API keys yourself, feel free to review the steps below. We've pre-created the keys to save time during the session.</p>
+<p>⚠️ Note: Unlike static API keys, Webex access tokens expire periodically. Therefore, you’ll need to follow the steps above to retrieve a fresh token each time you want to use the Webex APIs.</p>
+</div>
+<details class="blank" open="open">
+<summary>🧪 Google Colab - Accessing Google Colab and creating account</summary>
+<details class="info">
+<summary>Introduction</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">1. How to Use</label><label for="__tabbed_2_2">2. Getting Started With Google Colab</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Google Colab is one of several, cloud-based platform that provides a convenient environment for running notebooks. If you want to create a machine learning model but don't have a computer that can handle the workload, Google Colab is the platform for you. In our lab, we will be using Google Colab to test and run our code. However, if you have your own Python environment and prefer to run the code on your local machine, please feel free to do so.</p>
+<p>Here are some reasons why using Google Colab can be beneficial for this lab:</p>
+<ul>
+<li>Free Access to GPUs and TPUs: Google Colab offers free access to powerful GPUs and TPUs, which can significantly accelerate the training and fine-tuning of machine learning models.</li>
+<li>No Setup Required: With Colab, there is no need to set up your local environment. Everything runs in the cloud, which saves time and avoids configuration issues.</li>
+<li>Easy Collaboration: Colab notebooks can be easily shared and collaborated on with team members, making it an ideal tool for collaborative projects.</li>
+<li>Integration with Google Drive: Colab integrates seamlessly with Google Drive, allowing you to save and manage your work conveniently.</li>
+<li>Pre-installed Libraries: Many popular machine learning libraries, including TensorFlow and PyTorch, come pre-installed in Colab, making it easy to start working on your projects immediately.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Session Timeout</p>
+<p>When using Google Colab, if your notebook is <strong>idle for too long</strong>, the session will <strong>time out</strong>, requiring you to <strong>re-run all the cells from the start</strong>.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">1. Initial Step</label><label for="__tabbed_3_2">2. New Jupyter Notebook</label><label for="__tabbed_3_3">3. GPU and TPU Information</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>To start working with Google Collab Notebook you first need to log in to your personal Google account, then go to this link <a href="https://colab.research.google.com" target="_blank">Google Colab</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use your personal Google account(gmail) for your lab</p>
+</div>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Create a new Jupyter Notebook</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/Colab_signup.png" data-title="Colab_SignUP" data-desc-position="top"><img alt="Colab_SignUP" src="../assets/task1/Colab_signup.png"></a></p>
+<ul>
+<li>On creating a new notebook, it will create a Jupyter notebook with Untitled0.ipynb and save it to your google drive in a folder named Colab Notebooks. Now as it is essentially a Jupyter Notebook, all commands of Jupyter Notebooks will work here. </li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/Colab_unt.png" data-title="Colab_Untitled" data-desc-position="top"><img alt="Colab_Untitled" src="../assets/task1/Colab_unt.png"></a></p>
+<details class="note">
+<summary>Note</summary>
+<ul>
+<li>
+<p>There might be times when we need to fine-tune models or perform specific tasks that require changing the runtime environment in Colab. Google Colab offers different runtime environments that can be selected based on your requirements:</p>
+</li>
+<li>
+<p><strong>Python Versions:</strong> You can select between different versions of Python (e.g., Python 2 or Python 3)depending on the compatibility of the code and libraries. We will be using Python3 for our lab.</p>
+</li>
+<li>
+<p><strong>Hardware Accelerators:</strong> Colab provides access to hardware accelerators, which can be particularly useful for intensive computations. You can choose between:
+    </p><div class="highlight"><pre><span></span><code>None: No hardware acceleration, suitable for basic tasks.
+GPU: Accelerate your computations with a Graphics Processing Unit.
+TPU: Use a Tensor Processing Unit for even faster performance, especially beneficial for deep learning tasks.
+</code></pre></div><p></p>
+</li>
+</ul>
+</details>
+<ul>
+<li>
+<p>Click the arrow next to “Connect” to open the dropdown</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/Colab_chg.png" data-title="Colab_runtime" data-desc-position="top"><img alt="Colab_runtime" src="../assets/task1/Colab_chg.png"></a></p>
+</li>
+<li>
+<p>Select “Change runtime type”: This will open a dialog box where you can configure the runtime environment.</p>
+</li>
+<li>
+<p>Select Python Version: Choose Python 3 from the “Runtime type” dropdown menu.</p>
+</li>
+<li>
+<p>Select Hardware Accelerator: From the “Hardware accelerator” dropdown menu, choose  GPU, or TPU .</p>
+</li>
+</ul>
+<details class="note">
+<summary>Note</summary>
+<ul>
+<li>
+<p>GPU (Graphics Processing Unit): Best for tasks requiring extensive parallel processing, such as training neural networks (the main focus in our lab guide).</p>
+</li>
+<li>
+<p>TPU (Tensor Processing Unit): Optimized for deep learning tasks</p>
+</li>
+</ul>
+</details>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/savColab_chg.png" data-title="Colab_savruntime" data-desc-position="top"><img alt="Colab_savruntime" src="../assets/task1/savColab_chg.png"></a></p>
+<ul>
+<li>Save Settings: Click “Save” to apply the changes.</li>
+</ul>
+<details class="note">
+<summary>Note</summary>
+<ul>
+<li><strong>New Cell:</strong> Whenever you want to copy the code in Google Colab and run it, be sure to click on + Code to add a new code cell.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8/newcell.png" data-title="Colab_newcell" data-desc-position="top"><img alt="Colab_newcell" src="../assets/task8/newcell.png"></a></p>
+<ul>
+<li><strong>Execute Code:</strong> Click the play button to the left of the code, or use the keyboard shortcut "Command/Ctrl+Enter" while the cell is selected.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8/exec.png" data-title="Colab_newcell_execute" data-desc-position="top"><img alt="Colab_newcell_execute" src="../assets/task8/exec.png"></a></p>
+</details>
+</div>
+<div class="tabbed-block">
+<p>While Google Colab offers free access to GPUs and TPUs, there are limitations. For more consistent access to high-performance GPUs and TPUs, you might need to subscribe to <a href="https://colab.research.google.com/signup" target="_blank">Colab Pro or Colab Pro+ accounts</a>. These paid plans provide priority access to better hardware, longer runtimes, and more memory.</p>
+<p></p><p align="right"> 👉 When you're ready, click the <strong>“Huggingface Hub - Creating Account”</strong> tab below to proceed. </p><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="blank" open="open">
+<summary>🤗 Huggingface Hub - Creating Account</summary>
+<details class="info">
+<summary>Introduction - Using Huggingface Hub to share our Datasets</summary>
+<p>In this lab, we will be utilizing the <a href="https://huggingface.co/">Hugging Face Hub</a> to load our custom datasets (Optional Task). As we progress, we will be working with datasets, so let’s create a Hugging Face account to facilitate our lab exercises. Hugging Face provides an extensive repository of datasets that can be easily integrated into your machine learning workflows. For the purposes of this lab, we will demonstrate how to access/upload and use our custom datasets effectively.</p>
+<p>However, when fine-tuning models in your own work environment, especially if you are using private data, there are important considerations to keep in mind:</p>
+<ul>
+<li><strong>Private Datastores:</strong> If you are working with proprietary or sensitive data, it is crucial to use your organization's secure datastores. Ensure that all data handling complies with your organization's data privacy policies and regulations.</li>
+<li><strong>Hugging Face Datasets:</strong> If you prefer to use Hugging Face for dataset storage and management, make sure to mark your datasets as private. This setting ensures that your data cannot be accessed by anyone outside your organization, maintaining the confidentiality and integrity of your information. Please refer to Huggingface documentation for more info.</li>
+</ul>
+<p><strong>Few more Condsideration</strong></p>
+<ul>
+<li><strong>Upload Dataset:</strong> When uploading your dataset to Hugging Face, choose the appropriate privacy settings. You can set your dataset to private during the upload process.</li>
+<li><strong>Check Permissions:</strong> Regularly review and manage the permissions of your datasets to ensure they remain private and secure.</li>
+<li><strong>Collaborator Access:</strong> If you need to share the dataset with specific team members, use the Hugging Face interface to grant access to trusted collaborators only.</li>
+</ul>
+<p>By following these guidelines, you can ensure that your data remains secure while leveraging the powerful tools and resources provided by Hugging Face. This approach not only enhances your workflow efficiency but also upholds the best practices in data security and privacy.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><input id="__tabbed_4_3" name="__tabbed_4" type="radio"><input id="__tabbed_4_4" name="__tabbed_4" type="radio"><input id="__tabbed_4_5" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">1. Accessing Hugging Face</label><label for="__tabbed_4_2">2. Signing Up &amp; Creating Account</label><label for="__tabbed_4_3">3. Hugging Face API Keys</label><label for="__tabbed_4_4">4. Accessing Hugging Face in Colab</label><label for="__tabbed_4_5">5. Optional Steps (Python Environment)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Hugging Face can be accessed by browsing to <a href="https://huggingface.co/" target="_blank">huggingface</a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/HF.png" data-title="HLF" data-desc-position="top"><img alt="HLF" src="../assets/task8a/HF.png"></a></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Browse to Hugging Face home page and click on Sign up. Follow the instructions as per below images</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/signup.png" data-title="SignUP" data-desc-position="top"><img alt="SignUP" src="../assets/task8a/signup.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/HFProfile.png" data-title="Prof" data-desc-position="top"><img alt="Prof" src="../assets/task8a/HFProfile.png"></a></p>
+<ul>
+<li>Please check your email address for a confirmation link and click to verify your account </li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/HFverify.png" data-title="Verify" data-desc-position="top"><img alt="Verify" src="../assets/task8a/HFverify.png"></a></p>
+<ul>
+<li>Organization Creation (Optional): While you can upload datasets and fine-tune models directly on Hugging Face without creating an organization, you have the option to create an organization on Hugging Face. This can be particularly useful for team collaboration, as it allows you to upload all your datasets and models in one centralized location. Click on "Create a New organization". In our example, we're creating an organization called <span class="colour" style="color:red">OmerAccount</span>. If that name is already taken, please choose another name of your preference.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/HFOptional.png" data-title="Optional" data-desc-position="top"><img alt="Optional" src="../assets/task8a/HFOptional.png"></a></p>
+<ul>
+<li>Access Your Models and Datasets: The same can be accessed by clicking your profile picture on the top right corner of the Hugging Face website. This will take you to your personal dashboard where you can view and manage your models and datasets.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/HFNoMD1.png" data-title="Mo_DS1" data-desc-position="top"><img alt="Mo_DS1" src="../assets/task8a/HFNoMD1.png"></a></p>
+<ul>
+<li>At this stage, you will see no models or datasets created under your account.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/HFNoMD.png" data-title="Mo_DS" data-desc-position="top"><img alt="Mo_DS" src="../assets/task8a/HFNoMD.png"></a></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>Create an API Key:</strong> Sine we will be uploading our datasets to the Hugging Face Hub, we need to create an API key for our account. This API key will be used to authenticate and interact with the Hugging Face services programmatically. You can browse to <a href="https://huggingface.co/settings/token">huggingface API Key</a></li>
+</ul>
+<p>or </p>
+<ul>
+<li>Click on your profile picture &gt; Settings &gt; Access Tokens</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/HF_APi.png" data-title="HF_API" data-desc-position="top"><img alt="HF_API" src="../assets/task8a/HF_APi.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/writetoken.png" data-title="HF_WT" data-desc-position="top"><img alt="HF_WT" src="../assets/task8a/writetoken.png"></a></p>
+<ul>
+<li>
+<p>Under the "Access Tokens" section, click on "Create new token." You will see options to select the token type and provide a token name. For example, you might name your token "OmerToken" and select the approperiate permissions.  </p>
+<ul>
+<li>
+<p>Fine-grained: tokens with this role can be used to provide fine-grained access to specific resources, such as a specific model or models in a specific organization. This type of token is useful in production environments, as you can use your own token without sharing access to all your resources.</p>
+</li>
+<li>
+<p>Read: tokens with this role can only be used to provide read access to repositories you could read. That includes public and private repositories that you, or an organization you’re a member of, own. Use this role if you only need to read content from the Hugging Face Hub 
+(e.g. when downloading private models or doing inference).</p>
+</li>
+<li>
+<p>Write: tokens with this role additionally grant write access to the repositories you have write access to. Use this token if you need to create or push content to a repository (e.g., when training a model or modifying a model card).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>As we have a lab envoirnment we will be using the "Write" permission. This token will have read and write access to all your resources and can make calls to inference API on your behalf, as shown in the image below.</p>
+</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/createtoken.png" data-title="HF_CT" data-desc-position="top"><img alt="HF_CT" src="../assets/task8a/createtoken.png"></a></p>
+<ul>
+<li><strong>Save and Secure the Token:</strong> Once the token is generated, save it securely, as it will be needed to access and manage your datasets via the API. The image below is for reference only. Make sure to use and save the token you generate.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Save to Key Vault</p>
+<p>Open the <strong><code>$ keys</code></strong> panel (bottom-left) and paste your <strong>Hugging Face Token</strong> there.</p>
+</div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/gentoken.png" data-title="HF_GT" data-desc-position="top"><img alt="HF_GT" src="../assets/task8a/gentoken.png"></a></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Open the Google Colab notebook and navigate to the new “Secrets” section in the sidebar by clicking the "key icon”</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/gensec.png" data-title="HF_GT_sec" data-desc-position="top"><img alt="HF_GT_sec" src="../assets/task8a/gensec.png"></a></p>
+<ul>
+<li>
+<p>Click on “Add a new secret.” Enter the name example: HF_TOKEN and value of the secret. Note: The name is permanent once set. </p>
+</li>
+<li>
+<p>The list of secrets is global across all your notebooks.</p>
+</li>
+<li>
+<p>Use the “Notebook access” toggle to grant or revoke access to a secret for each notebook.</p>
+</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/addsec.png" data-title="HF_GT_sec_created" data-desc-position="top"><img alt="HF_GT_sec_created" src="../assets/task8a/addsec.png"></a></p>
+<p></p><p align="right"> 👉 When you're ready, click the <strong>“langchain”</strong> tab below to proceed. </p><p></p>
+</div>
+<div class="tabbed-block">
+<details class="note">
+<summary>Note</summary>
+<ul>
+<li>For Python modules requiring API keys as environment variables, you can use the below code snippet:</li>
+</ul>
+<p>The below code snippet is for reference only; there's no need to execute it at this point.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Import Colab Secrets userdata module</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Set other API keys similarly</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"HF_TOKEN"</span><span class="p">]</span> <span class="o">=</span> <span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'HF_TOKEN'</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+</details>
+<p></p><p align="right"> 👉 When you're ready, click the <strong>“Langchain”</strong> tab below to proceed. </p><p></p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="blank" open="open">
+<summary> 🔗🔗🔗 LangChain</summary>
+<details class="info">
+<summary>Introduction - Using Langchain</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><input id="__tabbed_5_3" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">1. Getting Started</label><label for="__tabbed_5_2">2. LangChain API Keys</label><label for="__tabbed_5_3">3. LangServe</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>LangChain is a framework that enables developers to build applications using large language models (LLMs). It connects with various AI models, data sources, and APIs, allowing the creation of complex work flows for tasks such as question answering, chatbot interactions, and document summarization. We will explore LangChain in more detail in the later section.</p>
+<p>Let's explore how to create a LangChain account and obtain the API key, which we will use later in our lab. </p>
+<p>To start building applications with LangChain, you'll need an API key. This key allows your applications to securely connect with LangChain's services, ensuring proper authentication and usage tracking.</p>
+<p>Lets start by visiting the official <a href="https://smith.langchain.com/settings" target="_blank">LangChain website</a> and create an account. You'll need to enter some basic information about yourself or your organization. In this example, I will be using my Google account (tmedemouserX) to sign up.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/ls1.png" data-title="ls1" data-desc-position="top"><img alt="ls1" src="../assets/task1/ls1.png"></a></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>To create an API key head to the <strong>Settings</strong> page. Then click Create API Key.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/ls2.png" data-title="ls2" data-desc-position="top"><img alt="ls2" src="../assets/task1/ls2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/ls3.png" data-title="ls3" data-desc-position="top"><img alt="ls3" src="../assets/task1/ls3.png"></a></p>
+<ul>
+<li>Lets create a Personal Access Token</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/lsr3.png" data-title="lsr3" data-desc-position="top"><img alt="lsr3" src="../assets/task1/lsr3.png"></a></p>
+<details class="note">
+<summary>Note</summary>
+<p>After generating the token, store it securely, as you will need it for future tasks. Ensure you use and save the token you create.</p>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Save to Key Vault</p>
+<p>Open the <strong><code>$ keys</code></strong> panel (bottom-left) and paste your <strong>LangChain API Key</strong> there.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<details class="note">
+<summary>Note</summary>
+<p>The below code snippet is for reference only, there's no need to execute it at this point.  </p>
+<p>In the code test snippet below, we'll configure our environment to enable tracing of AI calls and set up the API key for interacting with LangChain's services. We will be using these in the upcoming section.
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">langchain</span> <span class="n">langchain</span><span class="o">-</span><span class="n">openai</span>
+    <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">langchain</span><span class="o">-</span><span class="n">community</span>
+    <span class="n">export</span> <span class="n">LANGCHAIN_TRACING_V2</span><span class="o">=</span><span class="n">true</span>
+    <span class="n">export</span> <span class="n">LANGCHAIN_API_KEY</span><span class="o">=&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">key</span><span class="o">&gt;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+</details>
+<p></p><p align="right"> 👉 When you're ready, click the <strong>"Ollama - Running Locally - Optional Task"</strong> tab below to proceed. </p><p></p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="blank" open="open">
+<summary>💻 Ollama - Running Locally - Optional Task</summary>
+<details class="info">
+<summary>Introduction</summary>
+<p>Have you ever used ChatGPT and amazed at its ability to understand and respond to your queries? But did you know that you can also harness the power of open-source models using Ollama? With Ollama, you can download and interact with these models directly, getting responses that are tailored to your needs.</p>
+<p>In this lab, I'll show you how to install Ollama locally on your machine and start using it to generate responses. You'll learn how to download and load open-source models, and then use Ollama's intuitive interface to interact with them. More info for <a href="https://ollama.com/" target="_blank">Ollama can be found here</a></p>
+<details class="note">
+<summary>Note</summary>
+<p>The steps below are provided for informational purposes. If you are using the demo laptop in this lab, feel free to follow these instructions. However, if you are using your personal or work machine, please ensure that you have the necessary privileges and authorization from your organization's administrator to install Ollama locally.</p>
+</details>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><input id="__tabbed_6_3" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">1. Prerequisites</label><label for="__tabbed_6_2">2. Installing Ollama Locally</label><label for="__tabbed_6_3">3. Ollama - Web Interface</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Ensure that Docker is installed and running on your machine. It is available for various operating systems, including macOS, Windows, and Linux. You can download it from the <a href="https://www.docker.com/" target="_blank">official Docker website</a> and follow the installation instructions for your specific OS.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<details class="note">
+<summary>Note</summary>
+<p>Since we're using a Mac, I'll demonstrate how you can install it on macOS.</p>
+</details>
+<ul>
+<li>
+<p>First, you need to install Ollama. You can download it <a href="https://ollama.com" target="_blank">here</a> and clicking on the download button. Follow the instructions.</p>
+</li>
+<li>
+<p>Once installed, Ollama functions as a command-line application, allowing you to interact with it directly through the terminal. To get started, open the terminal and enter the following command:</p>
+</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">SHELL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ollama</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li>It will output the below commands</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/olama.png" data-title="Ollama" data-desc-position="top"><img alt="Ollama" src="../assets/task1/olama.png"></a></p>
+<ul>
+<li>Ollama supports a list of models available <a href="https://ollama.com/library" target="_blank">here</a>. Below are some example models that can be downloaded:</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/olama1.png" data-title="Ollama1" data-desc-position="top"><img alt="Ollama1" src="../assets/task1/olama1.png"></a></p>
+<ul>
+<li>To download a model, for example, gemma:2b, which is a lighter model, we can simply type:</li>
+</ul>
+<div class="highlight"><span class="filename">SHELL</span><pre><span></span><code><span class="n">ollama</span> <span class="n">pull</span> <span class="n">gemma</span><span class="p">:</span><span class="mi">2</span><span class="n">b</span>
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/pull.png" data-title="pull" data-desc-position="top"><img alt="pull" src="../assets/task1/pull.png"></a></p>
+<ul>
+<li>After pulling the model we can interact with it in the terminal by typing:</li>
+</ul>
+<div class="highlight"><span class="filename">SHELL</span><pre><span></span><code><span class="n">ollama</span> <span class="n">run</span> <span class="n">gemma</span><span class="p">:</span><span class="mi">2</span><span class="n">b</span>
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/pull1.png" data-title="pull1" data-desc-position="top"><img alt="pull1" src="../assets/task1/pull1.png"></a></p>
+<ul>
+<li>We can now ask our question directly in the terminal</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/pull2.png" data-title="pull2" data-desc-position="top"><img alt="pull2" src="../assets/task1/pull2.png"></a></p>
+<ul>
+<li>To remove model you can type</li>
+</ul>
+<div class="highlight"><span class="filename">SHELL</span><pre><span></span><code><span class="n">ollama</span> <span class="n">rm</span> <span class="n">gemma</span><span class="p">:</span><span class="mi">2</span><span class="n">b</span>
+</code></pre></div>
+<ul>
+<li>To see the models installed, just enter </li>
+</ul>
+<div class="highlight"><span class="filename">SHELL</span><pre><span></span><code><span class="n">ollama</span> <span class="nb">list</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<details class="note">
+<summary>Note</summary>
+<p>Docker must be installed beforehand as a prerequisite.</p>
+</details>
+<p>Once we've installed Ollama, we can interact with it directly through the terminal, as demonstrated earlier. But what if you prefer a web interface? There are several open-source tools available, but I'll show you how to use <a href="https://github.com/open-webui/open-webui" target="_blank">Open WebUI</a>, which was previously known as Ollama WebUI.</p>
+<p>Open WebUI is a versatile, feature-rich, and user-friendly web interface that you can host yourself and use entirely offline. It offers a ChatGPT-style interface, allowing you to interact with language models running on locally (Ollama). This tool is especially useful for those who want to run language models locally or in a self-hosted environment, ensuring both data privacy and control.</p>
+<ul>
+<li>After installing Ollama, simply run the following Docker command to set up the interface</li>
+</ul>
+<div class="highlight"><span class="filename">SHELL</span><pre><span></span><code><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3000</span><span class="p">:</span><span class="mi">8080</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">internal</span><span class="p">:</span><span class="n">host</span><span class="o">-</span><span class="n">gateway</span> <span class="o">-</span><span class="n">v</span> <span class="nb">open</span><span class="o">-</span><span class="n">webui</span><span class="p">:</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">backend</span><span class="o">/</span><span class="n">data</span> <span class="o">--</span><span class="n">name</span> <span class="nb">open</span><span class="o">-</span><span class="n">webui</span> <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> <span class="n">ghcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="nb">open</span><span class="o">-</span><span class="n">webui</span><span class="o">/</span><span class="nb">open</span><span class="o">-</span><span class="n">webui</span><span class="p">:</span><span class="n">main</span>
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/pull3.png" data-title="pull3" data-desc-position="top"><img alt="pull3" src="../assets/task1/pull3.png"></a></p>
+<ul>
+<li>Once installed, you can access Open WebUI at <a href="http://localhost:3000" target="_blank">localhost</a>. </li>
+</ul>
+<p><span style="color: RED;">Note: Before accessing the web interface, you will be prompted to create an account. Please follow the instructions.</span></p>
+<ul>
+<li>In the dropdown menu, you'll see the model you previously installed via the terminal (gemma:2b).</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/pull4.png" data-title="pull4" data-desc-position="top"><img alt="pull4" src="../assets/task1/pull4.png"></a></p>
+<ul>
+<li>You can now Interact with the model via WebUi</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/pull5.png" data-title="pull5" data-desc-position="top"><img alt="pull5" src="../assets/task1/pull5.png"></a></p>
+<ul>
+<li>You no longer need to use the terminal to download a model. Simply navigate to the “Settings --&gt; Models” section in the WebUI, and select the specific model you want to download.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/pull6.png" data-title="pull6" data-desc-position="top"><img alt="pull6" src="../assets/task1/pull6.png"></a></p>
+<ul>
+<li>After installing, all the installed models will be displayed in the UI.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/pull7.png" data-title="pull7" data-desc-position="top"><img alt="pull7" src="../assets/task1/pull7.png"></a></p>
+<details class="note">
+<summary>Note</summary>
+<p>Using LangChain with Ollama allows you to leverage Ollama's capabilities within the LangChain ecosystem. You can find <a href="https://python.langchain.com/v0.1/docs/get_started/quickstart/" target="_blank">more information here</a></p><a href="https://python.langchain.com/v0.1/docs/get_started/quickstart/" target="_blank">
+</a></details><a href="https://python.langchain.com/v0.1/docs/get_started/quickstart/" target="_blank">
+<p></p><p align="right"> 👉 This concludes the task. Click the <strong>"AI/ML Revolution Unveiled "</strong> Task on the left. </p><p></p>
+</a></div><a href="https://python.langchain.com/v0.1/docs/get_started/quickstart/" target="_blank">
+</a></div><a href="https://python.langchain.com/v0.1/docs/get_started/quickstart/" target="_blank">
+</a></div><a href="https://python.langchain.com/v0.1/docs/get_started/quickstart/" target="_blank">
+</a></details><a href="https://python.langchain.com/v0.1/docs/get_started/quickstart/" target="_blank">
+</a></details>
+
+
+
+
+
+                
+
+<button class="vault-fab" id="vaultToggle" title="Key Vault">
+  <span class="fab-prompt">$</span> keys<span class="fab-cursor"></span>
+</button>
+
+<div class="vault-overlay" id="vaultOverlay"></div>
+
+<div class="vault-panel" id="vaultPanel">
+  <div class="vault-header">
+    <div class="vault-title">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      Key Vault
+    </div>
+    <button class="vault-close" id="vaultClose">×</button>
+  </div>
+
+  <div class="vault-body">
+    <div class="vault-field">
+      <label>Webex Bearer Token</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_webex_token" placeholder="Paste your Webex token..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_webex_token" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_webex_token" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Webex Room ID</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_room_id" placeholder="Paste your Room ID..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_room_id" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_room_id" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Hugging Face Token</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_hf_token" placeholder="Paste your HF token..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_hf_token" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_hf_token" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>LangChain API Key</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_langchain_key" placeholder="Paste your LangChain key..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_langchain_key" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_langchain_key" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Pinecone API Key</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_pinecone_key" placeholder="Paste your Pinecone key..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_pinecone_key" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_pinecone_key" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Gemini API Key</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_gemini_key" placeholder="Paste your Gemini key..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_gemini_key" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_gemini_key" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Groq API Key</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_groq_key" placeholder="Paste your Groq key..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_groq_key" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_groq_key" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vault-footer">
+    <span class="vault-note">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      Keys stay in your browser only
+    </span>
+    <button class="vault-clear" id="vaultClear">Clear All</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  const toggle = document.getElementById('vaultToggle');
+  const panel = document.getElementById('vaultPanel');
+  const overlay = document.getElementById('vaultOverlay');
+  const close = document.getElementById('vaultClose');
+  const clear = document.getElementById('vaultClear');
+  if (!toggle || !panel) return;
+
+  const keys = ['vault_webex_token', 'vault_room_id', 'vault_hf_token', 'vault_langchain_key', 'vault_pinecone_key', 'vault_gemini_key', 'vault_groq_key'];
+
+  // Load saved values
+  keys.forEach(k => {
+    const el = document.getElementById(k);
+    if (el) {
+      const val = localStorage.getItem(k);
+      if (val) el.value = val;
+      // Auto-save on input
+      el.addEventListener('input', () => {
+        localStorage.setItem(k, el.value);
+      });
+    }
+  });
+
+  // Toggle panel
+  function openVault() {
+    panel.classList.add('open');
+    overlay.classList.add('open');
+  }
+  function closeVault() {
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  toggle.addEventListener('click', openVault);
+  close.addEventListener('click', closeVault);
+  overlay.addEventListener('click', closeVault);
+
+  // Copy buttons
+  document.querySelectorAll('.vault-copy').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (target && target.value) {
+        navigator.clipboard.writeText(target.value).then(() => {
+          btn.style.color = '#34d399';
+          setTimeout(() => { btn.style.color = ''; }, 1200);
+        });
+      }
+    });
+  });
+
+  // Eye toggle buttons
+  document.querySelectorAll('.vault-eye').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (target) {
+        target.type = target.type === 'password' ? 'text' : 'password';
+      }
+    });
+  });
+
+  // Clear all
+  clear.addEventListener('click', () => {
+    keys.forEach(k => {
+      localStorage.removeItem(k);
+      const el = document.getElementById(k);
+      if (el) el.value = '';
+    });
+  });
+})();
+</script>
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer" style="background:#080d1a; border-top:1px solid rgba(255,255,255,0.04); padding:1.2rem 2rem;">
+  <div style="display:flex; align-items:center; justify-content:center; gap:2rem; max-width:1440px; margin:0 auto;">
+    <span style="font-family:'SF Mono','Fira Code','Cascadia Code',monospace; font-size:0.78rem; font-weight:600; color:rgba(255,255,255,0.45); letter-spacing:0.05em;">
+      <span style="color:#3b9eff;">&lt;</span> Omer Ilyas <span style="color:#3b9eff;">/&gt;</span>
+    </span>
+    <span style="width:1px; height:18px; background:rgba(255,255,255,0.1);"></span>
+    <div style="display:flex; gap:0.5rem; align-items:center;">
+      <a href="mailto:oilyas@cisco.com" title="Email" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; color:rgba(255,255,255,0.3); border-radius:50%; transition:all 0.25s ease; text-decoration:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/omerilyas4ccie/" target="_blank" title="LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; color:rgba(255,255,255,0.3); border-radius:50%; transition:all 0.25s ease; text-decoration:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4e31edb1.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "fade", "closeEffect": "fade", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html><!-- Key Vault — localStorage panel for lab keys -->

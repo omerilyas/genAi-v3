@@ -1,0 +1,1399 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Webex and GenAI">
+      
+      
+        <meta name="author" content="Omer Ilyas">
+      
+      
+      
+        <link rel="prev" href="../Task4a/">
+      
+      
+        <link rel="next" href="../Task5a/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.2.0-b3">
+    
+    
+      
+        <title>Module 6 - Context Windows and RAG - AI by Design</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.83068744.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#task-5-context-windows-and-retrieval-augmented-generation-rag" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI by Design" class="md-header__button md-logo" aria-label="AI by Design" data-md-component="logo">
+      
+  <img src="../assets/terminal-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI by Design
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 6 - Context Windows and RAG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI by Design" class="md-nav__button md-logo" aria-label="AI by Design" data-md-component="logo">
+      
+  <img src="../assets/terminal-logo.svg" alt="logo">
+
+    </a>
+    AI by Design
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lab
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 1 - Pre-Requisites and Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 2 - AI/ML Revolution Unveiled
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 3 - Tokenization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 4 - Embeddings and Vector Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task4a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 5 - Gemini Embedding 2 Multimodal Retrieval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Module 6 - Context Windows and RAG
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task5a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 7 - RAG through File Search Tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 8 - Multimodal RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 9 - GenAI Frameworks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 10 - Groq and Open Source Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task6b/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module 11 - Hugging Face with OpenAI-Compatible APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conclusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+<h1 id="task-5-context-windows-and-retrieval-augmented-generation-rag">Task 5: Context Windows and Retrieval Augmented Generation (RAG)</h1>
+<details class="blank" open="open">
+<summary>Context Windows</summary>
+<details class="info">
+<summary>Introduction</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Introduction</label><label for="__tabbed_1_2">How Context window work</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/cw.png" data-title="CW" data-desc-position="top"><img alt="CW" src="../assets/task5/cw.png"></a></p>
+<ul>
+<li>The context window is the limit on how much text the model can keep and process at once. It includes your messages, the model’s replies, and any other text in the conversation. If the conversation gets too long and goes beyond this limit, the model might start to forget what was said earlier.</li>
+</ul>
+<p><strong>Example</strong> </p>
+<ul>
+<li>For GPT-3.5, the context window limit is approximately 8,000 tokens (one token typically represents about 4 characters on average). If the input text along with previous interactions (if any) exceeds the limit of LLM, the model may not be able to see or remember parts of the text that fall outside this window. This can result in errors or the inability to refer back to earlier parts of the conversation or document. </li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/erro.png" data-title="Erro7" data-desc-position="top"><img alt="Erro7" src="../assets/task5/erro.png"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A token can be as small as a piece of a word or as large as a word itself, depending on the language and complexity of the text.</p>
+</div>
+<ul>
+<li>Consider a model with a context window limit of 8,000 tokens. If we input 6,000 tokens and the model generates a response of 1,500 tokens, the total token count is 7,500. This is within the model's context window, so all information is processed correctly.
+Conversely, if the input increases to 10,000 tokens and the response remains at 1,500 tokens, the total becomes 11,500 tokens. This exceeds the model's 8,000-token limit. Consequently, the model might lose context or be unable to respond properly as the excess information falls outside its context window. This demonstrates the importance of managing input size to stay within the model's processing capabilities.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/cw1.png" data-title="CW1" data-desc-position="top"><img alt="CW1" src="../assets/task5/cw1.png"></a></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>
+<p>In the below example , multiple potential predicted words exist, but the model chooses the words based on the surrounding context and their probability. However, if the context window size increases and the word "Webex" moves out of the window, the model may lose critical context. As a result, the next predicted word might be incorrect, as the model can no longer reference "Webex" to inform its predictions accurately. This highlights the importance of keeping key information within the context window to maintain the accuracy of the model's predictions.</p>
+</li>
+<li>
+<p>Additionally, the temperature setting in the model can influence the type of content it generates. Lower temperatures are useful for summarizing or generating more deterministic and concise outputs, while higher temperatures encourage creativity, making the model more suitable for writing stories or poems. Adjusting the temperature allows you to control the balance between predictability and creativity in the model's output.</p>
+</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/cw2.png" data-title="CW2" data-desc-position="top"><img alt="CW2" src="../assets/task5/cw2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/issue_colved.png" data-title="ISolved2" data-desc-position="top"><img alt="ISolved2" src="../assets/task5/issue_colved.png"></a></p>
+<ul>
+<li>Thats where RAG come into play</li>
+</ul>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="blank" open="open">
+<summary>Retrieval Augmented Generation (RAG)</summary>
+<details class="info">
+<summary>Introduction</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Introduction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Let's start by understanding what RAGs are before examining how they address context window issues.</p>
+<p>RAG = Retrieval Augmented Generation</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/rag.png" data-title="rag" data-desc-position="top"><img alt="rag" src="../assets/task5/rag.png"></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Lets focus on the <span class="colour" style="color:red">Generation </span>part. Generation basically means responding to user query. For example, you might ask the model whether DX or Navigators are compatible with supporting ThousandEyes.</p>
+</div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/rag1.png" data-title="rag1" data-desc-position="top"><img alt="rag1" src="../assets/task5/rag1.png"></a></p>
+<p>That's an excellent question. LLMs are trained on vast amounts of historical data, so they may recognize that DX and Navigators are well-regarded Cisco products. As a result, the LLM might confidently respond that you can install ThousandEyes on those devices. However, the issue is that the response may lack a verifiable source to back up that claim or the information can be out-of-date  </p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/rag2.png" data-title="rag2" data-desc-position="top"><img alt="rag2" src="../assets/task5/rag2.png"></a></p>
+<p>What if, instead of just asking the question, I had first consulted a reputable source and only then informed the user that ThousandEyes can't be installed on those devices? This is where Retrieval-Augmented Generation comes into play. By integrating a knowledge base such as PDFs, CSVs, images, and other resources into the model, we ensure that any time a question is asked, the response is based on the most current and accurate information available.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/rag3.png" data-title="rag3" data-desc-position="top"><img alt="rag3" src="../assets/task5/rag3.png"></a></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">How can RAG address the limitations we've seen with the context window?</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>To address the context window limitation, we can use an embedding model to convert relevant text into embeddings and store them in a vector database (covered in the previous section). When a user submits a query, we transform it into an embedding and compare it to the stored embeddings to find the closest match. Once we identify the match, we retrieve that specific chunk of text to respond to the query. This approach effectively overcomes the context window limitation by ensuring that our responses are accurate and contextually relevant.</p>
+<p>Now you can see how RAG can address some of the challenges with LLMs. Instead of re-training or fine-tuning the model with new information, we can augment our data sources to retrieve the most up-to-date information. Additionally, LLMs are now instructed to prioritize primary source data before generating responses, making them less likely to hallucinate and encouraging more accurate and reliable outputs.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/rag6.png" data-title="rag6" data-desc-position="top"><img alt="rag6" src="../assets/task5/rag6.png"></a></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">What's Happening Under the Hood?</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/rag7.png" data-title="rag7" data-desc-position="top"><img alt="rag7" src="../assets/task5/rag7.png"></a></p>
+<p>We normally start by taking multiple documents and converting them into embeddings. Imagine these embeddings as points in a 3D space, where each document is projected based on its semantic meaning or content. Documents located near each other in this space contain similar semantic information, which is crucial when we search for or retrieve information.</p>
+<p>Now, when we receive a query, we also convert it into an embedding (numerical value). We then perform a similarity search in a multidimensional space, looking for the documents that are closest to our query's embedding. These nearby documents are likely to contain the most relevant information.</p>
+<p>Once we've identified these matching documents, we retrieve the relevant sections (or "splits") and feed all this information into the LLM's context window, allowing it to generate a well-informed response.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/rag5.png" data-title="rag5" data-desc-position="top"><img alt="rag5" src="../assets/task5/rag5.png"></a></p>
+<p>We've seen models like Gemini Pro with a context window size of million, allowing them to retain more information. So, why use RAG? The answer is that RAG remains highly beneficial for sourcing real-time data,fact-checking, and accessing external knowledge that isn't contained within the context window.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">LAB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Let's build a quick RAG application</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>While LLMs (Large Language Models) like GPT's , Llama, Gemini e.t.c possess impressive general knowledge, they don't inherently have access to your data. To connect LLMs with your own data sources, we can use frameworks like <span class="colour" style="color:red">LangChain</span>. These frameworks enable us to leverage our own data by breaking down documents into smaller chunks and storing them as embeddings in vector databases.</p>
+<p>This approach allows us to build applications that can effectively use language models. Example: When a user asks a question, we convert it into embeddings, perform a semantic search to find the most relevant answers, and then send both the question and the retrieved information to the LLM to generate a response.</p>
+<p>In this section, we'll continue using LangChain, but in the following chapters, we'll explore it in greater depth to gain a more thorough understanding of its functionality.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/rag_pipe.png" data-title="PIPE" data-desc-position="top"><img alt="PIPE" src="../assets/task5/rag_pipe.png"></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In this section, we will be using a version of <a href="https://www.cisco.com/c/dam/en/us/td/docs/voice_ip_comm/cuipph/MPP/6800-DECT/deployment/CiscoDECT6800DeploymentGuide.pdf" target="_blank">Cisco DECT 6800 Deployment Guide</a>.  For the purposes of this lab, I've modified the original PDF by removing a few pages and saving it as a new file. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PDF we are using in this lab can be downloaded from <a download="dect.pdf" href="../assets/static/dect.pdf" target="_blank">here</a></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task1/warn.png" data-title="Warn" data-desc-position="top"><img alt="Warn" src="../assets/task1/warn.png"></a></p>
+</div>
+<ul>
+<li>Open Google Colab and create a new notebook. Click on "File" &gt; "New notebook". Please refer to the <a href="../Task1/">following section</a> to create Google Colab account.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task3/gcolab.png" data-title="GCOLAB" data-desc-position="top"><img alt="GCOLAB" src="../assets/task3/gcolab.png"></a></p>
+<ul>
+<li>Make sure you are connected to a runtime.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/rungc.png" data-title="HL_Format_run" data-desc-position="top"><img alt="HL_Format_run" src="../assets/task8a/rungc.png"></a></p>
+<ul>
+<li>Within your Google Colab notebook navigate to the new “Secrets” section in the sidebar.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/gensec.png" data-title="HF_GT_sec" data-desc-position="top"><img alt="HF_GT_sec" src="../assets/task8a/gensec.png"></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul>
+<li>
+<p>If not already done, Click on “Add a new secret.” Enter the name example: OPENAI_API_KEY and value of the secret(the API key created earlier). Note: The name is permanent once set. </p>
+</li>
+<li>
+<p>The list of secrets is global across all your notebooks.</p>
+</li>
+<li>
+<p>Use the “Notebook access” toggle to grant or revoke access to a secret for each notebook.</p>
+</li>
+</ul>
+</div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/gensec11.png" data-title="HF_GT_sec11" data-desc-position="top"><img alt="HF_GT_sec11" src="../assets/task8a/gensec11.png"></a></p>
+<ul>
+<li>
+<p>Let's load our PDF files into Google Colab. For this example, we can use the <a download="dect.pdf" href="../assets/static/dect.pdf" target="_blank">modified DECT guide</a></p>
+</li>
+<li>
+<p>Within Google Colab, Click on Folder and create a new folder called "data"</p>
+</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/fold.png" data-title="HL_Format_fold" data-desc-position="top"><img alt="HL_Format_fold" src="../assets/task8a/fold.png"></a></p>
+<ul>
+<li>Click on [...], select Upload. Make sure you choose your dect.pdf file </li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task8a/dc_created.png" data-title="HL_Format_fold_created" data-desc-position="top"><img alt="HL_Format_fold_created" src="../assets/task8a/dc_created.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/dect.png" data-title="HL_file_uplo" data-desc-position="top"><img alt="HL_file_uplo" src="../assets/task5/dect.png"></a></p>
+<ul>
+<li>First let’s install the necessary Python packages. Click "Restart Session", once the below packages are installed.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">langchain</span> <span class="n">langchain_community</span> <span class="n">langchain</span><span class="o">-</span><span class="n">openai</span> <span class="n">python</span><span class="o">-</span><span class="n">dotenv</span> <span class="n">chromadb</span> <span class="n">pymupdf</span> <span class="n">langchain</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">splitters</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/o1.png" data-title="Output" data-desc-position="top"><img alt="Output" src="../assets/task5/o1.png"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please remember to let each cell finish executing before moving on to the next one.</p>
+</div>
+<ul>
+<li>Let's retrieve a OpenAI API key and set it as an environment variable within the Colab environment</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'OPENAI_API_KEY'</span><span class="p">]</span> <span class="o">=</span> <span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'OPENAI_API_KEY'</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li>Let's import relevant libraries for RAG</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># from langchain import hub</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="c1"># from langchain.text_splitter import RecursiveCharacterTextSplitter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_text_splitters</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebBaseLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.vectorstores</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chroma</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.output_parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrOutputParser</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.runnables</span><span class="w"> </span><span class="kn">import</span> <span class="n">RunnablePassthrough</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span><span class="p">,</span> <span class="n">OpenAIEmbeddings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMuPDFLoader</span>  
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you receive any warnings related to langchain_community, or "USER_AGENT environment variable not set", you can safely ignore it. This does not affect functionality, especially in Google Colab.
+or  you can always insert the following command os.environ["USER_AGENT"] = "MyLangChainApp/1.0"</p>
+</div>
+<ul>
+<li>Next let’s load the data source. This is also known as “Data Ingestion”. Make sure you copy the path where the pdf file is downloaded. </li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">loader</span> <span class="o">=</span> <span class="n">PyMuPDFLoader</span><span class="p">(</span><span class="s2">"/content/data/dect.pdf"</span><span class="p">)</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li>Transform, where we break data into small chunks. We can use techniques like RecursiveCharacterTextSplitter or tiktoken for tokenizing text.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>RecursiveCharacterTextSplitter Covered in previous section</p>
+</div>
+<ul>
+<li>Let's create our embeddings. As discussed in the Embedding section, there are multiple techniques available. In this lab, we will use OpenAI embeddings. By default, the text-embedding-ada-002 model is used, but we can also opt for the text-embedding-3-large model if desired. Once the embeddings are created, they can be stored in a Vector Database. 
+While there are various databases available, as covered in the Embeddings and Vector DB section, in our example, we will use the Chroma Vector DB, which can be easily deployed locally on your machine. 
+We will also create a retriever by using  retriever = vectorstore.as_retriever() which converts the vector store into a retriever object. This retriever can then be used to find and retrieve documents or data from the vector store that are most relevant to a given query, based on the similarity of their embeddings.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">vectorstore</span> <span class="o">=</span> <span class="n">Chroma</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">documents</span><span class="o">=</span><span class="n">splits</span><span class="p">,</span> 
+                                    <span class="n">embedding</span><span class="o">=</span><span class="n">OpenAIEmbeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"text-embedding-3-large"</span><span class="p">))</span>
+
+<span class="n">retriever</span> <span class="o">=</span> <span class="n">vectorstore</span><span class="o">.</span><span class="n">as_retriever</span><span class="p">()</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are using Chroma dB but you have options to use other databases as well such as Faiss. 
+Also we can use <a href="https://python.langchain.com/v0.2/docs/integrations/text_embedding/ollama/">embeddings from Ollama</a>, an open-source and cost-free embedding solution. Below is a code snippet for your reference only:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<div class="highlight"><pre><span></span><code># from langchain_community.embeddings import OllamaEmbeddings
+# embeddings = OllamaEmbeddings()
+</code></pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More info on Vector Databases can be found <a href="https://python.langchain.com/v0.2/docs/integrations/vectorstores/" target="_blank">here</a></p>
+</div>
+<ul>
+<li>At this stage, we've loaded the document, created splits, converted them into embeddings, and stored them in the Vector DB (without passing anything to the LLM yet). Now, let's query the database to ensure we can retrieve the information.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">query</span> <span class="o">=</span> <span class="s2">"what is the Quick Set up and Installation Process for the Dect phones"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">vectorstore</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">page_content</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/o2.png" data-title="Output2" data-desc-position="top"><img alt="Output2" src="../assets/task5/o2.png"></a></p>
+<ul>
+<li>Let's now create our prompt. There are several ways to do this, you can either craft it manually or use prompts that have already been made available on the LangChain Hub. In this section, I'll demonstrate how to manually create a prompt and use it. </li>
+</ul>
+<details class="info">
+<summary>Optional — LangChain Hub &amp; API Key (click to expand)</summary>
+<p>To access LangChain Hub, you'll need a LangChain API Key. The key is in your <code>.txt</code> file from the start of the lab.</p>
+<p>If you want to create one yourself, browse to <a href="https://smith.langchain.com/" target="_blank">LangSmith</a> and create an account or use the tmedemouserX account to sign in.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/lsmith.png" data-title="Lsmith" data-desc-position="top"><img alt="Lsmith" src="../assets/task5/lsmith.png"></a></p>
+<ul>
+<li>Create your API Key</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/lsmith1.png" data-title="Lsmith1" data-desc-position="top"><img alt="Lsmith1" src="../assets/task5/lsmith1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/lsmith12.png" data-title="Lsmith12" data-desc-position="top"><img alt="Lsmith12" src="../assets/task5/lsmith12.png"></a></p>
+<ul>
+<li>Enter LANGCHAIN_API_KEY in the Colab secrets or in the code:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"LANGCHAIN_API_KEY"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"PASTE-YOUR-KEY-HERE"</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/lsmith123.png" data-title="Lsmith123" data-desc-position="top"><img alt="Lsmith123" src="../assets/task5/lsmith123.png"></a></p>
+<p><strong>Using hub.pull() to load a pre-built prompt:</strong></p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">#prompt = hub.pull("rlm/rag-prompt")</span>
+<span class="c1">#prompt</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>The prompt template looks like this:</p>
+<p><em>"You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise. Question: {question} Context: {context} Answer:"</em></p>
+<p>To retrieve the template message only:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">#req1 = prompt.messages[0].prompt.template</span>
+<span class="c1">#req1</span>
+</code></pre></div></td></tr></tbody></table></div>
+</details>
+<ul>
+<li>Instead of pulling a pre-built prompt template using hub.pull(), we now define our own custom prompt using ChatPromptTemplate. This gives us full control over the structure of the prompt and ensures it works consistently without relying on external repositories.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.prompts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<span class="n">template</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">Answer the question based only on the following context.</span>
+<span class="s2">If the answer is not in the context, say you don't know.</span>
+
+<span class="s2">Context:</span>
+<span class="si">{context}</span>
+
+<span class="s2">Question: </span><span class="si">{question}</span>
+
+<span class="s2">Answer:</span>
+<span class="s2">"""</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_template</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li>We can now connect LLMs to our data sources. In this lab, we are using OpenAI models, but feel free to use open-source models if you prefer.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li>Lets use the Retrieval-Augmented Generation (RAG) pipeline to put all together. We will use retriever | format_docs to retrieve relevant documents (or context) related to the input question and formats them. The RunnablePassthrough method will be used to  simply pass the question  without modifying it.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Question</span> <span class="o">=</span> <span class="s2">"Quick Set up and Installation Process for dectphone and summarise"</span>
+<span class="c1">#  Chain that wik take our input question from below</span>
+<span class="n">rag_chain</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">{</span><span class="s2">"context"</span><span class="p">:</span> <span class="n">retriever</span> <span class="o">|</span> <span class="n">format_docs</span><span class="p">,</span> <span class="s2">"question"</span><span class="p">:</span> <span class="n">RunnablePassthrough</span><span class="p">()}</span>
+    <span class="o">|</span> <span class="n">prompt</span>
+    <span class="o">|</span> <span class="n">llm</span>
+    <span class="o">|</span> <span class="n">StrOutputParser</span><span class="p">()</span>  <span class="c1"># This component parses the LLM's output, typically converting it into a string format for easy use.</span>
+<span class="p">)</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">rag_chain</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When we pass our question into the rag_chain.invoke() method, it first goes through the retriever component that we set up earlier. The retriever uses the same embedding model, text-embedding-3-large, to transform the  question into an embedding vector. This vector is then compared with the embeddings of documents stored in the Chroma vector store to identify the most relevant ones. Once these relevant documents are retrieved based on the similarity of their embeddings, they are sent along with the original question to the language model (LLM), which then generates a response.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:orange">OUTPUT</span>
+To set up and install a DECT phone system, first review the site and plan the location of the base stations, ensuring they are within 50 meters of each other for good coverage. Upgrade the base stations to the latest firmware, configure them according to the Cisco IP DECT 6800 Series Administration Guide, and unpack and prepare the handsets. Finally, mount the base stations, place the handsets in their cradles, and make a few test calls to ensure everything is working correctly.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Measuring Vector Similarity Using Cosine Similarity</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Cosine similarity is a metric used to measure how similar two vectors are, regardless of their magnitude. It is particularly useful in the context of text analysis, information retrieval, and machine learning, where it is often used to compare the similarity of two text documents, sentences, or any other data that can be represented as vectors. In our code, we will use it to match the similarity between the question we asked and the answer we receive.</p>
+<ul>
+<li>Lets create a function that calculates the cosine similarity between two vectors by using dot product a scalar value. </li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Define the cosine similarity function</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1"># Define the cosine similarity function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">):</span>
+    <span class="n">dot_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">)</span>
+    <span class="n">norm_vec1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec1</span><span class="p">)</span>
+    <span class="n">norm_vec2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dot_product</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm_vec1</span> <span class="o">*</span> <span class="n">norm_vec2</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li>We will now convert the question into an embedding, retrieve the embedding of our question, and the embeddings of the documents retrieved by the retriever.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Convert the question into an embedding</span>
+<span class="n">embedding_model</span> <span class="o">=</span> <span class="n">OpenAIEmbeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"text-embedding-3-large"</span><span class="p">)</span>
+<span class="n">question_embedding</span> <span class="o">=</span> <span class="n">embedding_model</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
+<span class="n">retrieved_docs</span> <span class="o">=</span> <span class="n">retriever</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you receive any warnings related to langchain, you can safely ignore this warning.</p>
+</div>
+<ul>
+<li>Lets calculate and print similarity between the question and each retrieved document</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">retrieved_docs</span><span class="p">:</span>
+    <span class="c1"># Assuming your retriever does not provide embeddings directly, re-embed each document</span>
+    <span class="n">doc_embedding</span> <span class="o">=</span> <span class="n">embedding_model</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span><span class="p">)</span>
+    <span class="n">similarity</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">question_embedding</span><span class="p">,</span> <span class="n">doc_embedding</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Document: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>  <span class="c1"># Print a preview of the document</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cosine Similarity: </span><span class="si">{</span><span class="n">similarity</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/task5/cos_s.png" data-title="Csimi" data-desc-position="top"><img alt="Csimi" src="../assets/task5/cos_s.png"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cosine similarity values range from -1 to 1, where 1 means the vectors are identical, 0 means they are completely different, and values closer to 1 indicate greater similarity. In our example where one similarity score is 0.63 and another is 0.57, the document with a score of 0.63 is more similar to the query than the one with 0.57. Both scores indicate a moderate similarity to the query, but the document with 0.63 contains slightly more relevant information.</p>
+</div>
+<hr>
+<p><strong>What We Built — and How It Differs from the Previous Task</strong></p>
+<p>In the previous task (Embeddings &amp; Vector Database), we learned how to convert text into vectors, store them, and retrieve the most relevant chunks using similarity search. That was <strong>retrieval only</strong> you got back raw document fragments, but no synthesized answer.</p>
+<p>In this task, we added the missing piece: an <strong>LLM (GPT-4o)</strong> sitting on top of the retrieval layer. This is what makes it a full <strong>RAG pipeline</strong>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Task 4 (Retrieval Only)</th>
+<th>Task 5 (RAG)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td>A query</td>
+<td>A query</td>
+</tr>
+<tr>
+<td><strong>Step 1</strong></td>
+<td>Convert query to embedding</td>
+<td>Convert query to embedding</td>
+</tr>
+<tr>
+<td><strong>Step 2</strong></td>
+<td>Search vector DB for similar chunks</td>
+<td>Search vector DB for similar chunks</td>
+</tr>
+<tr>
+<td><strong>Step 3</strong></td>
+<td>Return raw chunks to user</td>
+<td>Feed chunks + question to LLM</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Raw document fragments</td>
+<td>A clear, natural language answer</td>
+</tr>
+<tr>
+<td><strong>Hallucination risk</strong></td>
+<td>N/A (no generation)</td>
+<td>Low, LLM is grounded in retrieved data</td>
+</tr>
+</tbody>
+</table>
+<p>The cosine similarity scores we just calculated confirm that the retriever is pulling the right context before it ever reaches the LLM. This is critical if the retrieval is bad, the LLM will generate a bad answer no matter how capable it is. <strong>Good retrieval is the foundation of good RAG.</strong></p>
+<p>The pattern we just built load documents, chunk them, embed them, store in a vector DB, retrieve, and pass to an LLM is the same pattern behind virtually every enterprise AI assistant, knowledge base chatbot, and intelligent search system in production today.</p>
+<p></p><p align="right"> 👉 This concludes the task. Click the <strong>"Multimodal RAG"</strong> Task on the left. </p><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+</details>
+
+
+
+
+
+                
+
+<button class="vault-fab" id="vaultToggle" title="Key Vault">
+  <span class="fab-prompt">$</span> keys<span class="fab-cursor"></span>
+</button>
+
+<div class="vault-overlay" id="vaultOverlay"></div>
+
+<div class="vault-panel" id="vaultPanel">
+  <div class="vault-header">
+    <div class="vault-title">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      Key Vault
+    </div>
+    <button class="vault-close" id="vaultClose">×</button>
+  </div>
+
+  <div class="vault-body">
+    <div class="vault-field">
+      <label>Webex Bearer Token</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_webex_token" placeholder="Paste your Webex token..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_webex_token" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_webex_token" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Webex Room ID</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_room_id" placeholder="Paste your Room ID..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_room_id" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_room_id" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Hugging Face Token</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_hf_token" placeholder="Paste your HF token..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_hf_token" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_hf_token" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>LangChain API Key</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_langchain_key" placeholder="Paste your LangChain key..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_langchain_key" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_langchain_key" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Pinecone API Key</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_pinecone_key" placeholder="Paste your Pinecone key..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_pinecone_key" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_pinecone_key" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Gemini API Key</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_gemini_key" placeholder="Paste your Gemini key..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_gemini_key" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_gemini_key" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="vault-field">
+      <label>Groq API Key</label>
+      <div class="vault-input-row">
+        <input type="password" id="vault_groq_key" placeholder="Paste your Groq key..." spellcheck="false" autocomplete="off">
+        <button class="vault-eye" data-target="vault_groq_key" title="Show/Hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="vault-copy" data-target="vault_groq_key" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vault-footer">
+    <span class="vault-note">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      Keys stay in your browser only
+    </span>
+    <button class="vault-clear" id="vaultClear">Clear All</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  const toggle = document.getElementById('vaultToggle');
+  const panel = document.getElementById('vaultPanel');
+  const overlay = document.getElementById('vaultOverlay');
+  const close = document.getElementById('vaultClose');
+  const clear = document.getElementById('vaultClear');
+  if (!toggle || !panel) return;
+
+  const keys = ['vault_webex_token', 'vault_room_id', 'vault_hf_token', 'vault_langchain_key', 'vault_pinecone_key', 'vault_gemini_key', 'vault_groq_key'];
+
+  // Load saved values
+  keys.forEach(k => {
+    const el = document.getElementById(k);
+    if (el) {
+      const val = localStorage.getItem(k);
+      if (val) el.value = val;
+      // Auto-save on input
+      el.addEventListener('input', () => {
+        localStorage.setItem(k, el.value);
+      });
+    }
+  });
+
+  // Toggle panel
+  function openVault() {
+    panel.classList.add('open');
+    overlay.classList.add('open');
+  }
+  function closeVault() {
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  toggle.addEventListener('click', openVault);
+  close.addEventListener('click', closeVault);
+  overlay.addEventListener('click', closeVault);
+
+  // Copy buttons
+  document.querySelectorAll('.vault-copy').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (target && target.value) {
+        navigator.clipboard.writeText(target.value).then(() => {
+          btn.style.color = '#34d399';
+          setTimeout(() => { btn.style.color = ''; }, 1200);
+        });
+      }
+    });
+  });
+
+  // Eye toggle buttons
+  document.querySelectorAll('.vault-eye').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (target) {
+        target.type = target.type === 'password' ? 'text' : 'password';
+      }
+    });
+  });
+
+  // Clear all
+  clear.addEventListener('click', () => {
+    keys.forEach(k => {
+      localStorage.removeItem(k);
+      const el = document.getElementById(k);
+      if (el) el.value = '';
+    });
+  });
+})();
+</script>
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer" style="background:#080d1a; border-top:1px solid rgba(255,255,255,0.04); padding:1.2rem 2rem;">
+  <div style="display:flex; align-items:center; justify-content:center; gap:2rem; max-width:1440px; margin:0 auto;">
+    <span style="font-family:'SF Mono','Fira Code','Cascadia Code',monospace; font-size:0.78rem; font-weight:600; color:rgba(255,255,255,0.45); letter-spacing:0.05em;">
+      <span style="color:#3b9eff;">&lt;</span> Omer Ilyas <span style="color:#3b9eff;">/&gt;</span>
+    </span>
+    <span style="width:1px; height:18px; background:rgba(255,255,255,0.1);"></span>
+    <div style="display:flex; gap:0.5rem; align-items:center;">
+      <a href="mailto:oilyas@cisco.com" title="Email" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; color:rgba(255,255,255,0.3); border-radius:50%; transition:all 0.25s ease; text-decoration:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/omerilyas4ccie/" target="_blank" title="LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; color:rgba(255,255,255,0.3); border-radius:50%; transition:all 0.25s ease; text-decoration:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4e31edb1.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "fade", "closeEffect": "fade", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html><!-- Key Vault — localStorage panel for lab keys -->
