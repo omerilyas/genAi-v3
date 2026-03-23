@@ -1,0 +1,7 @@
+myunderstanding.md
+*.bak
+.DS_Store
+venv/
+site/
+__pycache__/
+*.pyc

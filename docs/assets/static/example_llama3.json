@@ -1,0 +1,807 @@
+[
+    {
+        "question":"What is the solution provided by Webex Calling?",
+        "context":"Webex Calling is part of an integrated, intelligent, and modular team collaboration suite. It provides enterprise-grade PBX features, functionality, and performance previously only possible with an on-premises PBX network.",
+        "answer":"Webex Calling provides enterprise-grade PBX features, functionality, and performance."
+    },
+    {
+        "question":"What options are available for PSTN access in Webex Calling?",
+        "context":"Webex Calling can access the PSTN in three ways: Cisco Calling Plans, Cloud Connected PSTN, and Premises-based PSTN.",
+        "answer":"The options are Cisco Calling Plans, Cloud Connected PSTN, and Premises-based PSTN."
+    },
+    {
+        "question":"What type of devices does Webex Calling support?",
+        "context":"Webex Calling supports a wide range of Cisco MPP Series IP Phones (6800, 7800, and 8800 Series), Webex Devices, and a variety of third-party devices.",
+        "answer":"Webex Calling supports Cisco MPP Series IP Phones, Webex Devices, and a variety of third-party devices."
+    },
+    {
+        "question":"How are Webex Calling data centers distributed?",
+        "context":"Webex Calling data centers are globally distributed and geo-redundant. The data centers are located in six regions: US, Canada, Europe, UK, Australia, and Japan.",
+        "answer":"Webex Calling data centers are globally distributed and geo-redundant, located in six regions: US, Canada, Europe, UK, Australia, and Japan."
+    },
+    {
+        "question":"What is the function of the Local Gateway in Webex Calling?",
+        "context":"A Local Gateway connects to the PSTN either directly by terminating a PSTN trunk or by connecting to an existing PSTN gateway via a SIP trunk. It also registers with Webex Calling and handles all calls between the PSTN and Webex Calling.",
+        "answer":"The Local Gateway connects to the PSTN and registers with Webex Calling to handle all calls between the PSTN and Webex Calling."
+    },
+    {
+        "question":"What are the key benefits of Webex Calling for large enterprises?",
+        "context":"Webex Calling provides large enterprises with scalability, advanced call management features, and integration with other collaboration tools to streamline communication.",
+        "answer":"Webex Calling offers scalability, advanced call management, and integration with collaboration tools for large enterprises."
+    },
+    {
+        "question":"How does Webex Calling handle call encryption?",
+        "context":"Webex Calling uses SRTP for media encryption and TLS for signaling encryption to ensure secure communications.",
+        "answer":"SRTP and TLS are used in Webex Calling to encrypt media and signaling for secure communications."
+    },
+    {
+        "question":"What features are included in the Webex Calling analytics suite?",
+        "context":"Webex Calling offers analytics on call quality, usage patterns, and performance metrics to help optimize communication systems.",
+        "answer":"Call quality, usage patterns, and performance metrics are part of the Webex Calling analytics suite."
+    },
+    {
+        "question":"How does Webex Calling integrate with third-party devices?",
+        "context":"Webex Calling supports integration with third-party SIP phones, enabling flexibility in device choices.",
+        "answer":"Integration with third-party SIP phones provides flexibility in device choices for Webex Calling users."
+    },
+    {
+        "question":"What disaster recovery mechanisms are available in Webex Calling?",
+        "context":"Webex Calling ensures disaster recovery through geo-redundant data centers and automatic failover mechanisms.",
+        "answer":"Geo-redundant data centers and automatic failover mechanisms support disaster recovery in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling manage international call routing?",
+        "context":"International call routing in Webex Calling is managed through a global network of data centers to ensure high-quality communication.",
+        "answer":"A global network of data centers manages international call routing in Webex Calling."
+    },
+    {
+        "question":"What role does the Webex Control Hub play in Webex Calling?",
+        "context":"The Webex Control Hub is used for provisioning, configuring, and managing Webex Calling services from a centralized interface.",
+        "answer":"Provisioning, configuring, and managing Webex Calling services are handled through the Webex Control Hub."
+    },
+    {
+        "question":"What are the main security protocols used in Webex Calling?",
+        "context":"Webex Calling uses SRTP for media encryption and TLS for signaling encryption to protect communications.",
+        "answer":"SRTP and TLS are the main security protocols used in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling support mobile users?",
+        "context":"Webex Calling supports mobile users through the Webex App, which allows calls to be made and received on smartphones and tablets.",
+        "answer":"The Webex App enables mobile users to make and receive calls on smartphones and tablets in Webex Calling."
+    },
+    {
+        "question":"What are the benefits of Webex Calling for remote teams?",
+        "context":"Webex Calling provides remote teams with enterprise-grade calling features, mobility, and integration with collaboration tools.",
+        "answer":"Remote teams benefit from enterprise-grade calling features, mobility, and collaboration tool integration in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling ensure compliance with regulatory requirements?",
+        "context":"Webex Calling includes features such as call recording, monitoring, and secure data handling to ensure compliance with regulatory requirements.",
+        "answer":"Compliance with regulatory requirements in Webex Calling is ensured through call recording, monitoring, and secure data handling."
+    },
+    {
+        "question":"What redundancy features are built into Webex Calling?",
+        "context":"Webex Calling includes redundancy features like geo-redundant data centers and automatic failover to ensure continuous service.",
+        "answer":"Geo-redundant data centers and automatic failover ensure continuous service in Webex Calling."
+    },
+    {
+        "question":"What user management capabilities are available in Webex Calling?",
+        "context":"Webex Calling provides user management capabilities through the Webex Control Hub, allowing administrators to configure user settings and permissions.",
+        "answer":"User settings and permissions are managed through the Webex Control Hub in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling handle call routing?",
+        "context":"Call routing in Webex Calling is managed through dial plans and routing rules that can be customized to meet business needs.",
+        "answer":"Dial plans and customizable routing rules manage call routing in Webex Calling."
+    },
+    {
+        "question":"What kind of customer support does Cisco provide for Webex Calling?",
+        "context":"Cisco provides comprehensive customer support for Webex Calling, including technical assistance, training, and resources for deployment and management.",
+        "answer":"Technical assistance, training, and deployment resources are part of Cisco's support for Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling support hybrid deployments?",
+        "context":"Webex Calling supports hybrid deployments by integrating with both cloud and on-premises PBX systems, allowing for seamless communication.",
+        "answer":"Integration with cloud and on-premises PBX systems supports hybrid deployments in Webex Calling."
+    },
+    {
+        "question":"What are the call management features in Webex Calling?",
+        "context":"Webex Calling provides call management features such as call forwarding, call transfer, call hold, and voicemail.",
+        "answer":"Call management features in Webex Calling include call forwarding, call transfer, call hold, and voicemail."
+    },
+    {
+        "question":"How does Webex Calling support video calls?",
+        "context":"Webex Calling supports video calls between video-capable devices, allowing users to make and receive video calls seamlessly.",
+        "answer":"Video calls are supported between video-capable devices in Webex Calling."
+    },
+    {
+        "question":"What compliance features are available in Webex Calling?",
+        "context":"Webex Calling includes compliance features such as call recording, logging, and monitoring to meet regulatory requirements.",
+        "answer":"Compliance features in Webex Calling include call recording, logging, and monitoring."
+    },
+    {
+        "question":"What is the function of SRTP in Webex Calling?",
+        "context":"Secure Real-Time Transport Protocol (SRTP) is used to encrypt media streams in Webex Calling, ensuring secure communication.",
+        "answer":"SRTP encrypts media streams in Webex Calling to ensure secure communication."
+    },
+    {
+        "question":"How does Webex Calling support call analytics?",
+        "context":"Webex Calling offers detailed call analytics, including metrics on call quality, usage patterns, and performance to help optimize communication systems.",
+        "answer":"Webex Calling provides detailed call analytics on call quality, usage patterns, and performance."
+    },
+    {
+        "question":"What kind of redundancy features are available in Webex Calling?",
+        "context":"Webex Calling includes geo-redundant data centers and automatic failover mechanisms to ensure continuous service and high availability.",
+        "answer":"Redundancy features in Webex Calling include geo-redundant data centers and automatic failover."
+    },
+    {
+        "question":"How does Webex Calling ensure secure voice communications?",
+        "context":"Webex Calling uses encryption protocols such as SRTP for media and TLS for signaling to protect voice communications.",
+        "answer":"Encryption protocols like SRTP for media and TLS for signaling ensure secure voice communications in Webex Calling."
+    },
+    {
+        "question":"What integrations does Webex Calling offer with contact center solutions?",
+        "context":"Webex Calling integrates with Webex Contact Center, providing advanced features like call routing, IVR, and analytics to enhance customer service operations.",
+        "answer":"Integration with Webex Contact Center offers advanced features like call routing, IVR, and analytics."
+    },
+    {
+        "question":"How does Webex Calling handle call monitoring and recording?",
+        "context":"Webex Calling includes features for call monitoring and recording, which can be used for compliance, training, and quality assurance purposes.",
+        "answer":"Call monitoring and recording features in Webex Calling support compliance, training, and quality assurance."
+    },
+    {
+        "question":"What options are available for user authentication in Webex Calling?",
+        "context":"User authentication in Webex Calling is managed through secure protocols and can integrate with identity providers for single sign-on (SSO).",
+        "answer":"Webex Calling supports user authentication through secure protocols and integration with identity providers for SSO."
+    },
+    {
+        "question":"What is the role of the Webex App in Webex Calling?",
+        "context":"The Webex App provides a unified interface for messaging, video conferencing, and calling, allowing users to manage all communication needs from a single platform.",
+        "answer":"The Webex App unifies messaging, video conferencing, and calling for a seamless communication experience."
+    },
+    {
+        "question":"How does Webex Calling support international business operations?",
+        "context":"Webex Calling supports international operations with global data centers, ensuring reliable and high-quality voice communication around the world.",
+        "answer":"Global data centers support reliable and high-quality voice communication for international operations in Webex Calling."
+    },
+    {
+        "question":"What management capabilities does Webex Calling provide?",
+        "context":"Webex Calling offers comprehensive management tools through the Webex Control Hub, allowing for centralized provisioning, configuration, and monitoring of services.",
+        "answer":"The Webex Control Hub provides centralized provisioning, configuration, and monitoring for Webex Calling services."
+    },
+    {
+        "question":"How does Webex Calling handle voice and video integration?",
+        "context":"Webex Calling integrates with Webex Meetings and Webex Teams to provide seamless voice and video communication, enhancing collaboration.",
+        "answer":"Integration with Webex Meetings and Webex Teams allows for seamless voice and video communication in Webex Calling."
+    },
+    {
+        "question":"What are the benefits of Webex Calling for large enterprises?",
+        "context":"Webex Calling offers large enterprises scalability, advanced call management features, and integration with other collaboration tools to streamline communication.",
+        "answer":"Scalability, advanced call management, and integration with collaboration tools are benefits for large enterprises using Webex Calling."
+    },
+    {
+        "question":"What disaster recovery options are available with Webex Calling?",
+        "context":"Webex Calling ensures disaster recovery through geo-redundant data centers and automatic failover to maintain continuous service.",
+        "answer":"Geo-redundant data centers and automatic failover provide disaster recovery options in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling manage call quality?",
+        "context":"Webex Calling manages call quality with network optimization, advanced codecs, and quality of service (QoS) policies to ensure clear voice communication.",
+        "answer":"Call quality in Webex Calling is managed through network optimization, advanced codecs, and QoS policies."
+    },
+    {
+        "question":"What user profile management features are available in Webex Calling?",
+        "context":"User profiles in Webex Calling are managed through the Webex Control Hub, allowing administrators to configure settings and permissions.",
+        "answer":"User profile management features in Webex Calling include settings and permissions configuration through the Webex Control Hub."
+    },
+    {
+        "question":"How does Webex Calling integrate with CRM systems?",
+        "context":"Webex Calling supports integration with CRM systems, enhancing customer interactions and improving business processes.",
+        "answer":"Integration with CRM systems enhances customer interactions and business processes in Webex Calling."
+    },
+    {
+        "question":"What compliance features does Webex Calling offer?",
+        "context":"Webex Calling includes compliance features such as call recording, monitoring, and secure data handling to meet regulatory requirements.",
+        "answer":"Compliance features in Webex Calling include call recording, monitoring, and secure data handling."
+    },
+    {
+        "question":"How does Webex Calling support remote teams?",
+        "context":"Webex Calling supports remote teams by providing enterprise-grade calling features, mobility, and integration with collaboration tools.",
+        "answer":"Remote teams benefit from enterprise-grade calling features, mobility, and collaboration tool integration in Webex Calling."
+    },
+    {
+        "question":"What are the main security features of Webex Calling?",
+        "context":"Webex Calling includes security features such as encryption, secure voice, and compliance with industry standards to protect communications.",
+        "answer":"Security features in Webex Calling include encryption, secure voice, and industry-standard compliance."
+    },
+    {
+        "question":"How does Webex Calling handle emergency call routing?",
+        "context":"Emergency call routing in Webex Calling is managed through predefined routing rules that ensure calls are directed to the appropriate emergency services.",
+        "answer":"Predefined routing rules manage emergency call routing in Webex Calling."
+    },
+    {
+        "question":"What kind of support does Cisco provide for Webex Calling?",
+        "context":"Cisco provides comprehensive support for Webex Calling, including technical assistance, training, and resources for deployment and management.",
+        "answer":"Technical assistance, training, and deployment resources are part of Cisco's support for Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling support hybrid work environments?",
+        "context":"Webex Calling supports hybrid work environments by integrating with both cloud and on-premises PBX systems, allowing for seamless communication.",
+        "answer":"Webex Calling supports hybrid work environments by integrating with cloud and on-premises PBX systems."
+    },
+    {
+        "question":"What management tools are available in Webex Calling?",
+        "context":"Webex Calling provides management tools such as the Webex Control Hub for provisioning, configuring, and managing services.",
+        "answer":"Management tools in Webex Calling include the Webex Control Hub for provisioning, configuring, and managing services."
+    },
+    {
+        "question":"How does Webex Calling handle call quality issues?",
+        "context":"Webex Calling includes tools for monitoring call quality and diagnosing issues, ensuring high-quality voice communication.",
+        "answer":"Tools for monitoring and diagnosing issues ensure high-quality voice communication in Webex Calling."
+    },
+    {
+        "question":"What kind of analytics does Webex Calling offer?",
+        "context":"Webex Calling offers analytics on call quality, usage patterns, and performance metrics to help optimize communication.",
+        "answer":"Analytics on call quality, usage patterns, and performance metrics are available in Webex Calling."
+    },
+    {
+        "question":"What devices are compatible with Webex Calling?",
+        "context":"Webex Calling is compatible with a range of devices including Cisco IP Phones, Webex Room Devices, and third-party SIP phones.",
+        "answer":"Compatible devices for Webex Calling include Cisco IP Phones, Webex Room Devices, and third-party SIP phones."
+    },
+    {
+        "question":"How does Webex Calling integrate with Webex Meetings?",
+        "context":"Webex Calling integrates with Webex Meetings to provide a seamless experience for scheduling and joining video meetings.",
+        "answer":"Integration with Webex Meetings provides a seamless experience for scheduling and joining video meetings in Webex Calling."
+    },
+    {
+        "question":"What role does Webex Control Hub play in Webex Calling?",
+        "context":"Webex Control Hub is used for provisioning, configuring, and managing Webex Calling services, providing a centralized management interface.",
+        "answer":"Webex Control Hub provides a centralized interface for provisioning, configuring, and managing Webex Calling services."
+    },
+    {
+        "question":"How does Webex Calling ensure security for voice communications?",
+        "context":"Webex Calling ensures security through encryption protocols like SRTP for media and TLS for signaling, protecting voice communications.",
+        "answer":"Encryption protocols like SRTP for media and TLS for signaling ensure security in Webex Calling."
+    },
+    {
+        "question":"What features does Webex Calling offer for team collaboration?",
+        "context":"Webex Calling offers features such as group call management, conferencing, and integration with Webex Teams for enhanced collaboration.",
+        "answer":"Group call management, conferencing, and Webex Teams integration are features of Webex Calling for team collaboration."
+    },
+    {
+        "question":"How is call recording handled in Webex Calling?",
+        "context":"Call recording in Webex Calling is managed through built-in features that allow recording for compliance, training, and quality assurance.",
+        "answer":"Built-in call recording features in Webex Calling support compliance, training, and quality assurance."
+    },
+    {
+        "question":"What scalability options are available in Webex Calling?",
+        "context":"Webex Calling is designed to scale from small businesses to large enterprises, supporting thousands of users across multiple locations.",
+        "answer":"Scalability in Webex Calling supports small businesses to large enterprises, accommodating thousands of users."
+    },
+    {
+        "question":"How does Webex Calling support international operations?",
+        "context":"Webex Calling supports international operations with global data centers, ensuring reliable and high-quality voice communication worldwide.",
+        "answer":"Global data centers ensure reliable and high-quality voice communication for international operations in Webex Calling."
+    },
+    {
+        "question":"What redundancy features are built into Webex Calling?",
+        "context":"Webex Calling includes redundancy features like geo-redundant data centers and automatic failover to ensure continuous service.",
+        "answer":"Redundancy features in Webex Calling include geo-redundant data centers and automatic failover for continuous service."
+    },
+    {
+        "question":"How does Webex Calling handle user authentication?",
+        "context":"User authentication in Webex Calling is managed through secure protocols and integration with identity providers for single sign-on (SSO).",
+        "answer":"Secure protocols and integration with identity providers for single sign-on (SSO) manage user authentication in Webex Calling."
+    },
+    {
+        "question":"What reporting capabilities does Webex Calling provide?",
+        "context":"Webex Calling provides reporting capabilities that include detailed call analytics, usage patterns, and performance metrics.",
+        "answer":"Detailed call analytics, usage patterns, and performance metrics are part of Webex Calling's reporting capabilities."
+    },
+    {
+        "question":"What integrations does Webex Calling support with CRM systems?",
+        "context":"Webex Calling supports integrations with CRM systems to enhance customer interactions and streamline business processes.",
+        "answer":"Integrations with CRM systems in Webex Calling enhance customer interactions and streamline business processes."
+    },
+    {
+        "question":"How does Webex Calling support compliance with regulations?",
+        "context":"Webex Calling supports compliance with regulations through features like call recording, monitoring, and secure data handling.",
+        "answer":"Compliance features in Webex Calling include call recording, monitoring, and secure data handling."
+    },
+    {
+        "question":"What is the role of SRTP in Webex Calling?",
+        "context":"Secure Real-Time Transport Protocol (SRTP) is used in Webex Calling to encrypt voice media streams, ensuring secure communication.",
+        "answer":"SRTP encrypts voice media streams to ensure secure communication in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling manage user profiles?",
+        "context":"User profiles in Webex Calling are managed through the Webex Control Hub, allowing administrators to configure settings and permissions.",
+        "answer":"Webex Control Hub manages user profiles in Webex Calling, enabling configuration of settings and permissions by administrators."
+    },
+    {
+        "question":"How does Webex Calling support video conferencing?",
+        "context":"Webex Calling supports video conferencing through integration with Webex Meetings, allowing users to join video meetings from their phones or Webex devices.",
+        "answer":"Webex Calling supports video conferencing via integration with Webex Meetings."
+    },
+    {
+        "question":"What is the role of a Local Gateway in Webex Calling?",
+        "context":"A Local Gateway connects to the PSTN and handles call routing between Webex Calling and on-premises PBX systems.",
+        "answer":"The Local Gateway connects to the PSTN and handles call routing between Webex Calling and on-premises PBX systems."
+    },
+    {
+        "question":"How does Webex Calling handle number porting?",
+        "context":"Webex Calling supports number porting, allowing users to transfer existing phone numbers from another provider to Webex Calling.",
+        "answer":"Webex Calling allows users to port existing phone numbers from another provider."
+    },
+    {
+        "question":"How does Webex Calling support disaster recovery?",
+        "context":"Webex Calling ensures disaster recovery through geo-redundant data centers and automatic failover mechanisms.",
+        "answer":"Geo-redundant data centers and automatic failover mechanisms support disaster recovery in Webex Calling."
+    },
+    {
+        "question":"What is the Webex Calling architecture?",
+        "context":"Webex Calling is built on a cloud-based architecture with distributed data centers to ensure high availability and resilience.",
+        "answer":"Webex Calling has a cloud-based architecture with distributed data centers for high availability and resilience."
+    },
+    {
+        "question":"How does Webex Calling support call encryption?",
+        "context":"Webex Calling uses Secure Real-Time Transport Protocol (SRTP) and Transport Layer Security (TLS) to encrypt call signaling and media.",
+        "answer":"SRTP and TLS are used to encrypt call signaling and media in Webex Calling."
+    },
+    {
+        "question":"What are the benefits of Webex Calling for small businesses?",
+        "context":"Webex Calling offers small businesses enterprise-grade calling features, scalability, and integration with collaboration tools at a lower cost.",
+        "answer":"Small businesses benefit from enterprise-grade calling features, scalability, and collaboration tool integration at a lower cost with Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling integrate with existing collaboration tools?",
+        "context":"Webex Calling integrates with tools like Webex Teams and Microsoft Teams, providing a seamless collaboration experience.",
+        "answer":"Integration with Webex Teams and Microsoft Teams offers a seamless collaboration experience in Webex Calling."
+    },
+    {
+        "question":"What analytics features are available in Webex Calling?",
+        "context":"Webex Calling provides analytics features such as call quality monitoring, usage reports, and performance dashboards.",
+        "answer":"Analytics features in Webex Calling include call quality monitoring, usage reports, and performance dashboards."
+    },
+    {
+        "question":"How does Webex Calling support mobile devices?",
+        "context":"Webex Calling supports mobile devices through the Webex App, allowing users to make and receive calls on their smartphones.",
+        "answer":"The Webex App enables Webex Calling users to make and receive calls on mobile devices."
+    },
+    {
+        "question":"What is the role of the Webex App in Webex Calling?",
+        "context":"The Webex App provides a unified interface for messaging, video conferencing, and calling within Webex Calling.",
+        "answer":"The Webex App offers a unified interface for messaging, video conferencing, and calling in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling handle multi-location deployments?",
+        "context":"Webex Calling supports multi-location deployments by allowing centralized management and consistent calling features across all locations.",
+        "answer":"Centralized management and consistent calling features support multi-location deployments in Webex Calling."
+    },
+    {
+        "question":"What troubleshooting tools are available in Webex Calling?",
+        "context":"Webex Calling provides troubleshooting tools such as diagnostic reports, call logs, and real-time call quality monitoring.",
+        "answer":"Troubleshooting tools in Webex Calling include diagnostic reports, call logs, and real-time call quality monitoring."
+    },
+    {
+        "question":"How does Webex Calling ensure voice quality?",
+        "context":"Webex Calling ensures voice quality through network optimization, advanced codecs, and quality of service (QoS) policies.",
+        "answer":"Voice quality in Webex Calling is ensured by network optimization, advanced codecs, and QoS policies."
+    },
+    {
+        "question":"What integrations does Webex Calling support?",
+        "context":"Webex Calling supports integrations with CRM systems, collaboration tools, and contact center solutions.",
+        "answer":"Integrations with CRM systems, collaboration tools, and contact center solutions are supported by Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling handle call recording?",
+        "context":"Webex Calling includes call recording features for compliance, training, and quality assurance purposes.",
+        "answer":"Call recording in Webex Calling is available for compliance, training, and quality assurance."
+    },
+    {
+        "question":"What role do data centers play in Webex Calling?",
+        "context":"Data centers in Webex Calling provide redundancy, high availability, and disaster recovery capabilities.",
+        "answer":"Data centers provide redundancy, high availability, and disaster recovery in Webex Calling."
+    },
+    {
+        "question":"What are the benefits of Webex Calling for remote teams?",
+        "context":"Webex Calling offers remote teams enterprise-grade calling features, mobility, and integration with collaboration tools.",
+        "answer":"Enterprise-grade calling features, mobility, and collaboration tool integration benefit remote teams using Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling handle call forwarding?",
+        "context":"Webex Calling provides flexible call forwarding options, allowing users to redirect calls to other numbers or devices.",
+        "answer":"Flexible call forwarding options in Webex Calling allow users to redirect calls to other numbers or devices."
+    },
+    {
+        "question":"What is Webex Calling?",
+        "context":"Webex Calling is a cloud-based phone system designed to provide enterprise-grade calling features.",
+        "answer":"Webex Calling is a cloud-based phone system offering enterprise-grade calling features."
+    },
+    {
+        "question":"What types of phones are supported by Webex Calling?",
+        "context":"Webex Calling supports Cisco MPP Series IP Phones, Webex Devices, and a variety of third-party devices.",
+        "answer":"Webex Calling supports Cisco MPP Series IP Phones, Webex Devices, and various third-party devices."
+    },
+    {
+        "question":"How does Webex Calling integrate with other Webex services?",
+        "context":"Webex Calling integrates seamlessly with Webex Meetings, Webex Teams, and Webex Contact Center.",
+        "answer":"Webex Calling integrates with Webex Meetings, Webex Teams, and Webex Contact Center."
+    },
+    {
+        "question":"What are the deployment options for Webex Calling?",
+        "context":"Webex Calling can be deployed as a cloud-only solution or in a hybrid model with existing on-premises PBX systems.",
+        "answer":"Webex Calling offers cloud-only and hybrid deployment options."
+    },
+    {
+        "question":"How is call quality maintained in Webex Calling?",
+        "context":"Call quality in Webex Calling is maintained through the use of advanced codecs, network optimization, and quality of service (QoS) policies.",
+        "answer":"Advanced codecs, network optimization, and QoS policies maintain call quality in Webex Calling."
+    },
+    {
+        "question":"What is the purpose of the Webex Control Hub?",
+        "context":"The Webex Control Hub provides a centralized management interface for provisioning, configuring, and managing Webex Calling services.",
+        "answer":"The Webex Control Hub centralizes management for provisioning, configuring, and managing Webex Calling services."
+    },
+    {
+        "question":"How does Webex Calling support remote work?",
+        "context":"Webex Calling provides remote workers with enterprise-grade calling features and connectivity from any location with internet access.",
+        "answer":"Webex Calling supports remote work by offering enterprise-grade calling features and connectivity from any location with internet access."
+    },
+    {
+        "question":"What security measures are implemented in Webex Calling?",
+        "context":"Webex Calling includes security measures such as encryption, secure voice, and compliance with industry standards.",
+        "answer":"Encryption, secure voice, and industry-standard compliance are key security measures in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling handle emergency calls?",
+        "context":"Webex Calling compares the dial string with emergency numbers defined in the national numbering plan for the calling user.",
+        "answer":"Emergency calls in Webex Calling are handled by comparing the dial string with defined emergency numbers."
+    },
+    {
+        "question":"What are the benefits of Webex Calling for enterprises?",
+        "context":"Webex Calling provides enterprises with benefits such as lower maintenance costs, scalability, remote work support, and integration with collaboration tools.",
+        "answer":"Lower maintenance costs, scalability, remote work support, and collaboration tool integration are benefits for enterprises using Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling manage call routing?",
+        "context":"Call routing in Webex Calling is managed through dial plans and route groups for efficient and flexible call management.",
+        "answer":"Dial plans and route groups manage call routing in Webex Calling."
+    },
+    {
+        "question":"What customer support is available for Webex Calling?",
+        "context":"Cisco provides comprehensive customer support for Webex Calling, including technical assistance, training, and deployment resources.",
+        "answer":"Webex Calling customer support includes technical assistance, training, and deployment resources from Cisco."
+    },
+    {
+        "question":"How does Webex Calling ensure high availability?",
+        "context":"High availability is ensured through geo-redundant data centers and a fully redundant global backbone network.",
+        "answer":"Geo-redundant data centers and a redundant global backbone network ensure high availability in Webex Calling."
+    },
+    {
+        "question":"What are the international calling capabilities of Webex Calling?",
+        "context":"Webex Calling supports international calling through its global network of data centers, ensuring high-quality voice communication.",
+        "answer":"International calling is supported by Webex Calling's global data center network for high-quality voice communication."
+    },
+    {
+        "question":"What is the role of SIP in Webex Calling?",
+        "context":"Session Initiation Protocol (SIP) is used for signaling and managing multimedia communication sessions in Webex Calling.",
+        "answer":"SIP manages signaling and multimedia communication sessions in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling handle compliance with local regulations?",
+        "context":"Webex Calling supports compliance by routing calls through regional data centers and supporting lawful intercept.",
+        "answer":"Compliance with local regulations is ensured by routing calls through regional data centers and supporting lawful intercept."
+    },
+    {
+        "question":"What integration options are available for Webex Calling?",
+        "context":"Webex Calling integrates seamlessly with Webex Meetings, Webex Teams, and third-party collaboration tools to enhance productivity.",
+        "answer":"Webex Calling integrates with Webex Meetings, Webex Teams, and third-party tools for enhanced productivity."
+    },
+    {
+        "question":"How does Webex Calling support contact centers?",
+        "context":"Webex Calling integrates with Webex Contact Center to provide advanced features such as call routing, IVR, and analytics.",
+        "answer":"Advanced contact center features like call routing, IVR, and analytics are provided through Webex Contact Center integration."
+    },
+    {
+        "question":"What is the function of SRTP in Webex Calling?",
+        "context":"Secure Real-Time Transport Protocol (SRTP) is used to encrypt media streams, ensuring secure communication in Webex Calling.",
+        "answer":"SRTP encrypts media streams to ensure secure communication in Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling handle video calls?",
+        "context":"Webex Calling supports video calls between video-capable MPP phones, Webex Devices, and the Webex App.",
+        "answer":"Video calls are supported between video-capable MPP phones, Webex Devices, and the Webex App in Webex Calling."
+    },
+    {
+        "question":"What are the benefits of Webex Calling for remote workers?",
+        "context":"Webex Calling provides remote workers with enterprise-grade calling features and the ability to stay connected from anywhere with an internet connection.",
+        "answer":"Webex Calling offers remote workers enterprise-grade calling features and connectivity from any location with internet access."
+    },
+    {
+        "question":"What is the role of the Webex Control Hub in managing Webex Calling?",
+        "context":"The Webex Control Hub provides a centralized management interface for provisioning, configuring, and managing Webex Calling services.",
+        "answer":"The Webex Control Hub centralizes management for provisioning, configuring, and managing Webex Calling services."
+    },
+    {
+        "question":"How does Webex Calling integrate with existing on-premises PBX systems?",
+        "context":"Webex Calling can integrate with existing on-premises PBX systems through Local Gateways, allowing for a hybrid deployment model.",
+        "answer":"Webex Calling integrates with on-premises PBX systems via Local Gateways for hybrid deployment."
+    },
+    {
+        "question":"What is the significance of SRTP in Webex Calling?",
+        "context":"Secure Real-Time Transport Protocol (SRTP) is used in Webex Calling to encrypt media streams and ensure secure communication.",
+        "answer":"SRTP encrypts media streams in Webex Calling to ensure secure communication."
+    },
+    {
+        "question":"How does Webex Calling support compliance with local regulations?",
+        "context":"Webex Calling supports compliance with local regulations by routing calls through regional data centers and supporting lawful intercept.",
+        "answer":"Webex Calling complies with local regulations by using regional data centers and supporting lawful intercept."
+    },
+    {
+        "question":"What features are available for call management in Webex Calling?",
+        "context":"Webex Calling provides features such as call forwarding, call transfer, call hold, and voicemail for efficient call management.",
+        "answer":"Webex Calling offers call forwarding, call transfer, call hold, and voicemail features."
+    },
+    {
+        "question":"What options are available for integrating Webex Calling with other collaboration tools?",
+        "context":"Webex Calling integrates seamlessly with Webex Meetings, Webex Teams, and third-party collaboration tools to enhance productivity.",
+        "answer":"Webex Calling integrates with Webex Meetings, Webex Teams, and third-party tools for enhanced productivity."
+    },
+    {
+        "question":"How does Webex Calling handle call routing?",
+        "context":"Call routing in Webex Calling is managed through dial plans and route groups, allowing for efficient and flexible call management.",
+        "answer":"Dial plans and route groups manage call routing in Webex Calling."
+    },
+    {
+        "question":"What security features are built into Webex Calling?",
+        "context":"Webex Calling includes security features such as encryption, secure voice, and compliance with industry standards to protect communications.",
+        "answer":"Webex Calling features encryption, secure voice, and industry-standard compliance for communication security."
+    },
+    {
+        "question":"How does Webex Calling support mobile users?",
+        "context":"Webex Calling supports mobile users through the Webex App, allowing them to make and receive calls from their mobile devices.",
+        "answer":"The Webex App enables mobile users to make and receive calls on their devices with Webex Calling."
+    },
+    {
+        "question":"How does Webex Calling integrate with Cisco devices?",
+        "context":"Webex Calling integrates with Cisco devices such as MPP phones and Webex Room devices for a unified communication experience.",
+        "answer":"Cisco MPP phones and Webex Room devices integrate with Webex Calling for unified communication."
+    },
+    {
+        "question":"What are the deployment models available for Webex Calling?",
+        "context":"Webex Calling can be deployed as a cloud-only solution or in a hybrid model with existing on-premises PBX systems.",
+        "answer":"Webex Calling supports cloud-only and hybrid deployment models."
+    },
+    {
+        "question":"How does Webex Calling handle international calling?",
+        "context":"Webex Calling supports international calling through its global network of data centers, ensuring high-quality voice communication.",
+        "answer":"International calling is supported by Webex Calling's global data center network for high-quality voice communication."
+    },
+    {
+        "question":"What features does Webex Calling offer for contact centers?",
+        "context":"Webex Calling integrates with Webex Contact Center to provide advanced contact center features such as call routing, IVR, and analytics.",
+        "answer":"Advanced contact center features like call routing, IVR, and analytics are offered through Webex Contact Center integration."
+    },
+    {
+        "question":"How does Webex Calling support scalability?",
+        "context":"Webex Calling is designed to scale with the needs of businesses, supporting small to large enterprises with its cloud-based architecture.",
+        "answer":"The cloud-based architecture of Webex Calling supports scalability for businesses of all sizes."
+    },
+    {
+        "question":"What type of customer support is available for Webex Calling?",
+        "context":"Cisco provides comprehensive customer support for Webex Calling, including technical assistance, training, and resources for deployment.",
+        "answer":"Webex Calling customer support includes technical assistance, training, and deployment resources from Cisco."
+    },
+    {
+        "question":"How does Webex Calling handle voice quality?",
+        "context":"Webex Calling ensures high voice quality through the use of advanced codecs, network optimization, and quality of service (QoS) policies.",
+        "answer":"High voice quality in Webex Calling is ensured by advanced codecs, network optimization, and QoS policies."
+    },
+    {
+        "question":"What are the benefits of using Webex Calling over traditional PBX systems?",
+        "context":"Webex Calling offers benefits such as lower maintenance costs, scalability, remote work support, and integration with other collaboration tools.",
+        "answer":"Benefits of Webex Calling include lower maintenance costs, scalability, remote work support, and collaboration tool integration."
+    },
+    {
+        "question":"What signaling and media protocols does Webex Calling use?",
+        "context":"Webex Calling uses SIP for signaling and SRTP for media. Dynamic NAT can be used for IP Phone and Local Gateway IP addresses.",
+        "answer":"Webex Calling uses SIP for signaling and SRTP for media."
+    },
+    {
+        "question":"What is the role of the Webex Control Hub in Webex Calling?",
+        "context":"The Webex Control Hub, as part of the provisioning process of a trunk, provides connection parameters and digest credentials for SIP authentication.",
+        "answer":"The Webex Control Hub provides connection parameters and digest credentials for SIP authentication during Local Gateway registration."
+    },
+    {
+        "question":"What group features does Webex Calling provide?",
+        "context":"In addition to enterprise-grade PBX features, Webex Calling also provides group features, including unlimited subscriptions of auto-attendants, hunt groups, and call queues.",
+        "answer":"Webex Calling provides group features like unlimited subscriptions of auto-attendants, hunt groups, and call queues."
+    },
+    {
+        "question":"What are the regional platforms for Webex Calling?",
+        "context":"Webex Calling operates six regional platforms: US, Canada, UK, Europe, APJC Japan, and APJC Australia.",
+        "answer":"Webex Calling operates regional platforms in the US, Canada, UK, Europe, APJC Japan, and APJC Australia."
+    },
+    {
+        "question":"What role do load balancers play in Webex Calling datacenters?",
+        "context":"Load balancers and other network functions are required to build a scalable, redundant datacenter architecture in each Webex Calling datacenter.",
+        "answer":"Load balancers are used to build a scalable, redundant datacenter architecture."
+    },
+    {
+        "question":"What are the capabilities of the Webex App in Webex Calling?",
+        "context":"The Webex App supports commonly used mid-call features, rich presence with MPP and a single line for each user. The Webex App also allows control of the user\u2019s Cisco MPP phone.",
+        "answer":"The Webex App supports mid-call features, rich presence, and control of the user's Cisco MPP phone."
+    },
+    {
+        "question":"What is the role of the Webex Control Hub in Local Gateway registration?",
+        "context":"The Webex Control Hub, as part of the provisioning process of a trunk, provides connection parameters and digest credentials for SIP authentication.",
+        "answer":"The Webex Control Hub provides connection parameters and digest credentials for SIP authentication during Local Gateway registration."
+    },
+    {
+        "question":"What deployment options are available for Webex Calling?",
+        "context":"Webex Calling is deployed as a cloud-only solution, or if you require a mixed network of both cloud and on-premises PBXs, it is deployed as part of a hybrid cloud.",
+        "answer":"Webex Calling can be deployed as a cloud-only solution or as part of a hybrid cloud."
+    },
+    {
+        "question":"What are the data center locations for Webex Calling in the US?",
+        "context":"Webex Calling operates from redundant data centers in Dallas, Chicago, and New York within the US.",
+        "answer":"Webex Calling data centers in the US are located in Dallas, Chicago, and New York."
+    },
+    {
+        "question":"What capabilities does the Webex App offer when integrated with Webex Calling?",
+        "context":"The Webex App offers messaging, screen sharing, audio and video conferencing, and integrated calling with mid-call features or control of a user\u2019s desk phone.",
+        "answer":"The Webex App offers messaging, screen sharing, audio and video conferencing, and integrated calling with mid-call features or control of a user\u2019s desk phone."
+    },
+    {
+        "question":"What are the considerations for video calls in Webex Calling?",
+        "context":"Video calls are possible within a single Webex Calling org between video-capable devices or Webex App by dialing a work number or extension. PSTN only carries voice.",
+        "answer":"Video calls can be made within a single Webex Calling org between video-capable devices or Webex App, while PSTN only supports voice calls."
+    },
+    {
+        "question":"What are the main functions hosted in each Webex Calling datacenter?",
+        "context":"Each Webex Calling datacenter hosts call routing functions, provides provisioning interface access, and hosts access and peering Session Border Controllers (SBCs).",
+        "answer":"Webex Calling datacenters host call routing functions, provide provisioning interface access, and host access and peering SBCs."
+    },
+    {
+        "question":"How does Webex Calling ensure firewall traversal for calls?",
+        "context":"Phones and Local Gateways initiate a TLS connection to Webex Calling and are authenticated by Webex Calling, which then uses the same connection to send traffic back, providing firewall traversal.",
+        "answer":"Webex Calling ensures firewall traversal by using TLS connections initiated by phones and Local Gateways, and sending traffic back through the same connection."
+    },
+    {
+        "question":"How are trunks used in Webex Calling?",
+        "context":"Trunks connect Webex Calling with Local Gateways or to Dedicated Instance, if included in the solution. Each trunk represents a connection to one Local Gateway instance configured on a CUBE or Cisco voice gateway.",
+        "answer":"Trunks connect Webex Calling with Local Gateways or Dedicated Instances."
+    },
+    {
+        "question":"What is the Private Network Connect (PNC) solution?",
+        "context":"The Private Network Connect (PNC) solution allows Webex Calling customers to extend their private network to the cloud, ensuring high quality of service and low latency for voice calls.",
+        "answer":"The Private Network Connect (PNC) solution extends private networks to the cloud for high quality of service and low latency."
+    },
+    {
+        "question":"What type of subscription is Webex Calling based on?",
+        "context":"Webex Calling is part of an integrated, intelligent, and modular team collaboration suite. Licensing is subscription-based and managed with the Cisco Collaboration Flex Plan.",
+        "answer":"Webex Calling uses a subscription-based licensing model managed with the Cisco Collaboration Flex Plan."
+    },
+    {
+        "question":"Where are Webex Calling data centers located?",
+        "context":"Webex Calling is available globally and is delivered from redundant data centers in six regions: US, Canada, Europe, UK, Australia, and Japan.",
+        "answer":"Webex Calling data centers are located in the US, Canada, Europe, UK, Australia, and Japan."
+    },
+    {
+        "question":"How does Webex Calling handle emergency calls?",
+        "context":"For calls originating from Webex Calling users, the dial string is first compared with the emergency numbers defined in the national numbering plan for the calling user.",
+        "answer":"Emergency calls are handled by comparing the dial string with emergency numbers defined in the national numbering plan."
+    },
+    {
+        "question":"How are unknown numbers handled in Webex Calling?",
+        "context":"The routing behavior for unknown numbers is controlled by two settings: the enterprise-wide 'Unknown Number Handling' setting and the 'Calls to On-Premises Extension' setting at the location level.",
+        "answer":"Unknown numbers are handled based on the 'Unknown Number Handling' and 'Calls to On-Premises Extension' settings."
+    },
+    {
+        "question":"What is the purpose of dial plans in Webex Calling?",
+        "context":"Dial plans add the ability to route calls to premises-based call control instances or between multiple premises-based call control instances based on matches against dial patterns within a dial plan.",
+        "answer":"Dial plans enable call routing to premises-based call control instances based on dial patterns."
+    },
+    {
+        "question":"What are the benefits of using route groups in Webex Calling?",
+        "context":"Using route groups allows for redundancy and increased capacity. Multiple trunks can be grouped together in a route group to provide these benefits.",
+        "answer":"Route groups provide redundancy and increased capacity by grouping multiple trunks together."
+    },
+    {
+        "question":"What happens if ICE negotiation fails in Webex Calling?",
+        "context":"If ICE negotiation fails, media is anchored on the Webex Calling Access SBC, causing media to flow from the originating phone via the customer\u2019s Internet edge to the SBC and then back to the destination endpoint.",
+        "answer":"If ICE negotiation fails, media is anchored on the Webex Calling Access SBC, resulting in media flowing through the customer\u2019s Internet edge to the SBC and back to the destination endpoint."
+    },
+    {
+        "question":"What are route groups in Webex Calling?",
+        "context":"Route groups are used to group multiple trunks together to provide redundancy or increased capacity.",
+        "answer":"Route groups provide redundancy or increased capacity by grouping multiple trunks together."
+    },
+    {
+        "question":"What is required for Webex Calling endpoints to connect to the datacenters?",
+        "context":"Webex Calling endpoints on the customer\u2019s network use the public Internet as the access network to connect to the Webex Calling datacenters and establish over-the-top TLS connections.",
+        "answer":"Webex Calling endpoints use the public Internet to connect to datacenters and establish over-the-top TLS connections."
+    },
+    {
+        "question":"What features does the Dedicated Instance option provide in Webex Calling?",
+        "context":"The Dedicated Instance option is an entitlement within Webex Calling that provides a Cisco Unified Communications Manager based stack of applications, in a private cloud, dedicated to a single customer.",
+        "answer":"The Dedicated Instance option provides a Cisco Unified Communications Manager based stack of applications in a private cloud dedicated to a single customer."
+    },
+    {
+        "question":"How does Webex Calling handle PSTN access?",
+        "context":"Webex Calling can access the PSTN via Cisco Calling Plans, Cloud Connected PSTN, and Premises-based PSTN.",
+        "answer":"Webex Calling handles PSTN access through Cisco Calling Plans, Cloud Connected PSTN, and Premises-based PSTN."
+    },
+    {
+        "question":"What are the benefits of the Webex Calling global backbone?",
+        "context":"The global backbone interconnects the datacenters with a multi-gigabit and fully redundant network, optimizing media round-trip times and ensuring high availability.",
+        "answer":"The global backbone optimizes media round-trip times and ensures high availability with a multi-gigabit, fully redundant network."
+    },
+    {
+        "question":"What is the purpose of a Local Gateway in Webex Calling?",
+        "context":"A Local Gateway connects to the PSTN either directly by terminating a PSTN trunk or by connecting to an existing PSTN gateway via a SIP trunk. It also registers with Webex Calling and handles all calls between the PSTN and Webex Calling.",
+        "answer":"The Local Gateway connects to the PSTN and registers with Webex Calling to handle all calls between the PSTN and Webex Calling."
+    },
+    {
+        "question":"What is the significance of media path optimization in Webex Calling?",
+        "context":"Media path optimization using ICE tries to establish a direct media path between the involved entities to reduce bandwidth usage and improve call quality.",
+        "answer":"Media path optimization establishes a direct media path between entities to reduce bandwidth usage and improve call quality."
+    },
+    {
+        "question":"What is Webex Edge Connect?",
+        "context":"Webex Edge Connect is a solution that peers your Webex meetings and Webex Calling traffic with an Equinix Cloud Exchange (ECX) location. This peering improves user experience by providing guaranteed bandwidth and quality of service (QoS).",
+        "answer":"Webex Edge Connect peers Webex meetings and Webex Calling traffic with an Equinix Cloud Exchange (ECX) location to improve user experience with guaranteed bandwidth and QoS."
+    },
+    {
+        "question":"What is the Webex Calling solution overview?",
+        "context":"Webex Calling is part of an integrated, intelligent, and modular team collaboration suite. It provides enterprise-grade PBX features, functionality, and performance previously only possible with an on-premises PBX network.",
+        "answer":"Webex Calling provides enterprise-grade PBX features, functionality, and performance."
+    },
+    {
+        "question":"What connectivity options are available for Webex Calling?",
+        "context":"Customers and partners have access connectivity options beyond Over-the-top (OTT) Internet that can optimize the connection to Webex Calling and these include Webex Edge Connect or Private Network Connect.",
+        "answer":"Connectivity options for Webex Calling include Over-the-top (OTT) Internet, Webex Edge Connect, and Private Network Connect."
+    },
+    {
+        "question":"What type of patterns can be included in a Webex Calling dial plan?",
+        "context":"Dial plans can include numeric patterns (E.164 numbers, enterprise numbers, extensions) and domain patterns for routing alphanumeric SIP URIs.",
+        "answer":"Dial plans can include numeric patterns and domain patterns for routing SIP URIs."
+    },
+    {
+        "question":"What is the role of Local Gateways in Webex Calling?",
+        "context":"Local Gateways provide PSTN access for Webex Calling and can also connect Webex Calling to existing on-premises call control services.",
+        "answer":"Local Gateways provide PSTN access and connect Webex Calling to existing on-premises call control services."
+    },
+    {
+        "question":"How does Webex Calling handle calls between different customers?",
+        "context":"Calls between two Webex Calling customers must be routed through the PSTN to meet legal requirements, such as lawful intercept.",
+        "answer":"Calls between different Webex Calling customers are routed through the PSTN."
+    },
+    {
+        "question":"What types of phones are supported by Webex Calling?",
+        "context":"Webex Calling supports all models of Cisco Multiplatform Phones (MPP).",
+        "answer":"Webex Calling supports all models of Cisco Multiplatform Phones (MPP)."
+    },
+    {
+        "question":"What is Webex Edge Connect?",
+        "context":"Webex Edge Connect is a solution that peers your Webex meetings and Webex Calling traffic with an Equinix Cloud Exchange (ECX) location. This peering improves the calling and in-meeting user experience by providing guaranteed bandwidth and quality of service (QoS).",
+        "answer":"Webex Edge Connect peers Webex meetings and Webex Calling traffic with an Equinix Cloud Exchange location, improving user experience with guaranteed bandwidth and QoS."
+    },
+    {
+        "question":"How can video calls be made in Webex Calling?",
+        "context":"Webex Calling supports video calls between video capable MPP phones, Webex Devices, and Webex App (desktop and mobile). Users can use speed dial with a SIP address to call into Webex meetings.",
+        "answer":"Video calls in Webex Calling can be made between video capable MPP phones, Webex Devices, and Webex App."
+    },
+    {
+        "question":"What is the Dedicated Instance option in Webex Calling?",
+        "context":"The Dedicated Instance option is an entitlement within Webex Calling that provides a Cisco Unified Communications Manager based stack of applications, in a private cloud, dedicated to a single customer.",
+        "answer":"The Dedicated Instance option provides a Cisco Unified Communications Manager based stack of applications in a private cloud dedicated to a single customer."
+    },
+    {
+        "question":"How many participants can Webex Meetings support when added to Webex Calling?",
+        "context":"Webex Meetings supports advanced meeting experiences including meeting room recording, meeting room locking, remote dial-in access over PSTN, and supporting up to 1000 meeting participants.",
+        "answer":"Webex Meetings can support up to 1000 meeting participants."
+    }
+]

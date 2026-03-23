@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidebar Nav Style Options — AI by Design</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0b1120; color: rgba(255,255,255,0.7); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 2rem; }
+h1 { color: #fff; font-size: 1.4rem; margin-bottom: 2rem; text-align: center; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+.option { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 0; overflow: hidden; }
+.option-header { padding: 1rem 1.2rem; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.option-header h2 { font-size: 0.9rem; color: #3b9eff; margin-bottom: 0.3rem; }
+.option-header p { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+.sidebar { width: 100%; padding: 1rem 0; }
+
+/* ═══════════════════════════════════════
+   OPTION 1: Terminal-style with prompts
+   ═══════════════════════════════════════ */
+.opt1 .nav-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.75rem; font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer; transition: all 0.2s;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+}
+.opt1 .nav-item:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(59,158,255,0.04);
+  border-left-color: rgba(59,158,255,0.3);
+}
+.opt1 .nav-item.active {
+  color: #3b9eff;
+  background: rgba(59,158,255,0.06);
+  border-left-color: #3b9eff;
+}
+.opt1 .nav-prompt {
+  color: #34d399; font-weight: 700;
+}
+.opt1 .nav-item.active .nav-prompt { color: #34d399; }
+.opt1 .nav-section {
+  padding: 0.5rem 1.2rem 0.3rem;
+  font-size: 0.6rem; font-weight: 700;
+  color: rgba(255,255,255,0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: 'SF Mono', monospace;
+}
+
+/* ═══════════════════════════════════════
+   OPTION 2: Numbered badges with pills
+   ═══════════════════════════════════════ */
+.opt2 .nav-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer; transition: all 0.2s;
+  text-decoration: none;
+}
+.opt2 .nav-item:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.03);
+}
+.opt2 .nav-item.active { color: #fff; }
+.opt2 .nav-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 6px;
+  font-size: 0.6rem; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.opt2 .nav-item.active .nav-badge { box-shadow: 0 0 10px rgba(59,158,255,0.3); }
+.opt2 .b1 { background: #10b981; } .opt2 .b2 { background: #3b82f6; }
+.opt2 .b3 { background: #8b5cf6; } .opt2 .b4 { background: #f59e0b; }
+.opt2 .b5 { background: #ec4899; } .opt2 .b6 { background: #06b6d4; }
+.opt2 .b7 { background: #6366f1; } .opt2 .b8 { background: #f43f5e; }
+.opt2 .b9 { background: #10b981; }
+.opt2 .nav-section {
+  padding: 0.6rem 1rem 0.3rem;
+  font-size: 0.65rem; font-weight: 600;
+  color: #3b9eff;
+}
+
+/* ═══════════════════════════════════════
+   OPTION 3: Bordered cards with left accent
+   ═══════════════════════════════════════ */
+.opt3 .nav-item {
+  display: block;
+  margin: 0.25rem 0.6rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer; transition: all 0.25s;
+  text-decoration: none;
+  border-radius: 8px;
+  border-left: 3px solid transparent;
+  background: rgba(255,255,255,0.01);
+}
+.opt3 .nav-item:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.04);
+  transform: translateX(2px);
+}
+.opt3 .nav-item.active {
+  color: #fff;
+  background: rgba(59,158,255,0.06);
+}
+.opt3 .c1 { border-left-color: #10b981; } .opt3 .c1.active { border-left-color: #10b981; }
+.opt3 .c2 { border-left-color: #3b82f6; } .opt3 .c2.active { border-left-color: #3b82f6; }
+.opt3 .c3 { border-left-color: #8b5cf6; } .opt3 .c3.active { border-left-color: #8b5cf6; }
+.opt3 .c4 { border-left-color: #f59e0b; } .opt3 .c4.active { border-left-color: #f59e0b; }
+.opt3 .c5 { border-left-color: #ec4899; } .opt3 .c5.active { border-left-color: #ec4899; }
+.opt3 .c6 { border-left-color: #06b6d4; } .opt3 .c6.active { border-left-color: #06b6d4; }
+.opt3 .c7 { border-left-color: #6366f1; } .opt3 .c7.active { border-left-color: #6366f1; }
+.opt3 .c8 { border-left-color: #f43f5e; } .opt3 .c8.active { border-left-color: #f43f5e; }
+.opt3 .c9 { border-left-color: #10b981; } .opt3 .c9.active { border-left-color: #10b981; }
+.opt3 .nav-section {
+  padding: 0.6rem 0.8rem 0.3rem;
+  margin: 0 0.6rem;
+  font-size: 0.65rem; font-weight: 600;
+  color: #3b9eff;
+}
+
+/* ═══════════════════════════════════════
+   OPTION 4: Dot indicators + monospace
+   ═══════════════════════════════════════ */
+.opt4 .nav-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.72rem; font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer; transition: all 0.2s;
+  text-decoration: none;
+}
+.opt4 .nav-item:hover {
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.03);
+}
+.opt4 .nav-item.active { color: #fff; }
+.opt4 .nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  flex-shrink: 0;
+  transition: box-shadow 0.2s;
+}
+.opt4 .nav-item:hover .nav-dot { box-shadow: 0 0 8px currentColor; }
+.opt4 .nav-item.active .nav-dot { box-shadow: 0 0 10px currentColor; }
+.opt4 .d1 { background: #10b981; } .opt4 .d2 { background: #3b82f6; }
+.opt4 .d3 { background: #8b5cf6; } .opt4 .d4 { background: #f59e0b; }
+.opt4 .d5 { background: #ec4899; } .opt4 .d6 { background: #06b6d4; }
+.opt4 .d7 { background: #6366f1; } .opt4 .d8 { background: #f43f5e; }
+.opt4 .d9 { background: #10b981; }
+.opt4 .nav-section {
+  padding: 0.6rem 1rem 0.3rem;
+  font-size: 0.55rem; font-weight: 700;
+  color: rgba(255,255,255,0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-family: 'SF Mono', monospace;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<h1>Sidebar Nav Style Options — Pick Your Favourite</h1>
+
+<div class="grid">
+
+<!-- ════ OPTION 1: Terminal ════ -->
+<div class="option">
+  <div class="option-header">
+    <h2>Option 1 — Terminal Style</h2>
+    <p>Monospace font, green $ prompts, terminal feel</p>
+  </div>
+  <div class="sidebar opt1">
+    <div class="nav-section">// lab</div>
+    <a class="nav-item"><span class="nav-prompt">$</span> Overview</a>
+    <a class="nav-item"><span class="nav-prompt">$</span> Pre-Requisites & Setup</a>
+    <a class="nav-item"><span class="nav-prompt">$</span> AI/ML Revolution</a>
+    <a class="nav-item"><span class="nav-prompt">$</span> Tokenization</a>
+    <a class="nav-item"><span class="nav-prompt">$</span> Embeddings & Vector DB</a>
+    <a class="nav-item active"><span class="nav-prompt">$</span> Context Windows & RAG</a>
+    <a class="nav-item"><span class="nav-prompt">$</span> Multimodal RAG</a>
+    <a class="nav-item"><span class="nav-prompt">$</span> GenAI Frameworks</a>
+    <a class="nav-item"><span class="nav-prompt">$</span> Hugging Face APIs</a>
+    <a class="nav-item"><span class="nav-prompt">$</span> Conclusion</a>
+  </div>
+</div>
+
+<!-- ════ OPTION 2: Numbered Badges ════ -->
+<div class="option">
+  <div class="option-header">
+    <h2>Option 2 — Numbered Badges</h2>
+    <p>Colored number pills matching home page module cards</p>
+  </div>
+  <div class="sidebar opt2">
+    <div class="nav-section">Lab</div>
+    <a class="nav-item"><span class="nav-badge">O</span> Overview</a>
+    <a class="nav-item"><span class="nav-badge b1">1</span> Pre-Requisites & Setup</a>
+    <a class="nav-item"><span class="nav-badge b2">2</span> AI/ML Revolution</a>
+    <a class="nav-item"><span class="nav-badge b3">3</span> Tokenization</a>
+    <a class="nav-item"><span class="nav-badge b4">4</span> Embeddings & Vector DB</a>
+    <a class="nav-item"><span class="nav-badge b5">5</span> Gemini Embedding 2</a>
+    <a class="nav-item active"><span class="nav-badge b6">6</span> Context Windows & RAG</a>
+    <a class="nav-item"><span class="nav-badge b7">7</span> Multimodal RAG</a>
+    <a class="nav-item"><span class="nav-badge b8">8</span> GenAI Frameworks</a>
+    <a class="nav-item"><span class="nav-badge b9">9</span> Hugging Face APIs</a>
+  </div>
+</div>
+
+<!-- ════ OPTION 3: Bordered Cards ════ -->
+<div class="option">
+  <div class="option-header">
+    <h2>Option 3 — Bordered Cards</h2>
+    <p>Left accent color per task, card-like items, subtle hover</p>
+  </div>
+  <div class="sidebar opt3">
+    <div class="nav-section">Lab</div>
+    <a class="nav-item c1">Overview</a>
+    <a class="nav-item c1">Pre-Requisites & Setup</a>
+    <a class="nav-item c2">AI/ML Revolution</a>
+    <a class="nav-item c3">Tokenization</a>
+    <a class="nav-item c4">Embeddings & Vector DB</a>
+    <a class="nav-item c5">Gemini Embedding 2</a>
+    <a class="nav-item c6 active">Context Windows & RAG</a>
+    <a class="nav-item c7">Multimodal RAG</a>
+    <a class="nav-item c8">GenAI Frameworks</a>
+    <a class="nav-item c9">Hugging Face APIs</a>
+  </div>
+</div>
+
+<!-- ════ OPTION 4: Dot Indicators ════ -->
+<div class="option">
+  <div class="option-header">
+    <h2>Option 4 — Glowing Dots + Monospace</h2>
+    <p>Colored glowing dots (like multimodal diagram), monospace labels</p>
+  </div>
+  <div class="sidebar opt4">
+    <div class="nav-section">// lab modules</div>
+    <a class="nav-item"><span class="nav-dot d1"></span> Overview</a>
+    <a class="nav-item"><span class="nav-dot d1"></span> Pre-Requisites</a>
+    <a class="nav-item"><span class="nav-dot d2"></span> AI/ML Revolution</a>
+    <a class="nav-item"><span class="nav-dot d3"></span> Tokenization</a>
+    <a class="nav-item"><span class="nav-dot d4"></span> Embeddings & VectorDB</a>
+    <a class="nav-item"><span class="nav-dot d5"></span> Gemini Embedding 2</a>
+    <a class="nav-item active"><span class="nav-dot d6"></span> Context Windows & RAG</a>
+    <a class="nav-item"><span class="nav-dot d7"></span> Multimodal RAG</a>
+    <a class="nav-item"><span class="nav-dot d8"></span> GenAI Frameworks</a>
+    <a class="nav-item"><span class="nav-dot d9"></span> Hugging Face APIs</a>
+  </div>
+</div>
+
+</div>
+
+<p style="text-align:center; margin-top:2rem; color:rgba(255,255,255,0.2); font-size:0.75rem;">Hover over items to see interaction. Blue highlighted = active page.</p>
+
+</body>
+</html>

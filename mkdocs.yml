@@ -1,0 +1,111 @@
+---
+site_name: AI by Design
+site_description: Webex and GenAI
+site_author: Omer Ilyas
+copyright: Omer Ilyas - Technical Marketing Engineer - oilyas@cisco.com
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.instant
+    - navigation.top
+    - search.suggest
+    - search.highlight  
+    - content.code.copy
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy 
+  logo: assets/terminal-logo.svg
+  custom_dir: docs/overrides
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+extra_css:
+  - stylesheets/extra.css
+plugins:
+  - search
+  # - with-pdf:
+  #     cover_title: WEBEX and Generative AI
+  #     cover_subtitle: Generative AI and Webex integration - Omer Ilyas
+  #     cover_logo: assets/white_logo.png
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: fade
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: false
+      skip_classes:
+      - custom-skip-class-name
+      auto_caption: true
+      caption_position: top
+markdown_extensions:
+  - md_in_html
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - tables
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+nav:
+  - Home: index.md
+  - Lab:
+      - Overview: overview.md
+      - Module 1 - Pre-Requisites and Setup: Task1.md
+      - Module 2 - AI/ML Revolution Unveiled: Task2.md
+      - Module 3 - Tokenization: Task3.md
+      - Module 4 - Embeddings and Vector Database: Task4.md
+      - Module 5 - Gemini Embedding 2 Multimodal Retrieval: Task4a.md
+      - Module 6 - Context Windows and RAG: Task5.md
+      - Module 7 - RAG through File Search Tool: Task5a.md
+      - Module 8 - Multimodal RAG: Task6.md
+      - Module 9 - GenAI Frameworks: Task9.md
+      - Module 10 - Groq and Open Source Models: Task10.md
+      - Module 11 - Hugging Face with OpenAI-Compatible APIs: Task6b.md
+      # - Task 7  - Optional - Understanding Fine-Tuning for Large Language Models: Task7.md
+      # - Task 8  - Optional - Fine Tuning - Deep Dive into Quantization , LoRA and SFT: Task8.md
+      # - Task 8a - Optional - Configuring and Fine Tuning - Using llama2: Task8a.md
+      # - Task 8b - Optional - Configuring and Fine Tuning - Using llama3: Task8b.md
+      # - Task 8c - Optional - Configuring and Fine Tuning - Using ChatGPT: Task8c.md
+      # - Task 8d - Optional - Model Merging: Task8d.md
+      # - Task 9 - Log out and Shutdown the Lab: Task20.md
+      - Conclusion: conclusion.md
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/omerilyas4ccie/
