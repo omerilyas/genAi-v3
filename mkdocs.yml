@@ -40,6 +40,12 @@ theme:
       primary: custom
       toggle:
         icon: material/palette
+        name: Switch to vintage mode
+    # Palette toggle for vintage mode
+    - scheme: vintage
+      primary: custom
+      toggle:
+        icon: material/typewriter
         name: Switch to light mode
 extra_css:
   - stylesheets/extra.css
