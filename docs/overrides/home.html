@@ -3,17 +3,16 @@
 {{ super() }}
 <style>
     /* ── Reset ── */
-    .md-container { background: #0b1120; }
+    .md-container { background: var(--md-default-bg-color); }
     .md-main { flex-grow: 0; height: 0; }
     .md-main__inner { display: flex; height: 100%; }
-    .md-header { display: none; }
     .md-tabs { display: none; }
 
     /* ── Hero ── */
     .hero {
         position: relative;
         min-height: 100vh;
-        background: #0b1120;
+        background: var(--md-default-bg-color);
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -57,7 +56,7 @@
 
     /* ── Right-side visual: ASCII terminal ── */
     .ascii-block {
-        background: rgba(255, 255, 255, 0.02);
+        background: #0d1526;
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 16px;
         padding: 0;
@@ -196,14 +195,14 @@
         font-size: clamp(2rem, 4.5vw, 3.2rem);
         font-weight: 800;
         line-height: 1.15;
-        color: #fff;
+        color: rgb(var(--site-ink));
         margin: 0 0 1.2rem;
         letter-spacing: -0.02em;
     }
 
     .hero-title span {
         display: block;
-        color: rgba(255, 255, 255, 0.35);
+        color: var(--site-muted-color);
         font-weight: 600;
         font-size: 0.65em;
         letter-spacing: 0;
@@ -222,13 +221,13 @@
     .hero-desc {
         font-size: 1rem;
         line-height: 1.8;
-        color: rgba(255,255,255,0.45);
+        color: var(--site-muted-color);
         max-width: 480px;
         margin: 0 0 2.2rem;
     }
 
     .hero-desc strong {
-        color: rgba(255,255,255,0.8);
+        color: rgba(var(--site-ink),0.8);
     }
 
     /* ── Buttons ── */
@@ -264,13 +263,13 @@
 
     .btn-outline {
         background: transparent;
-        border: 1px solid rgba(255,255,255,0.12);
-        color: rgba(255,255,255,0.65) !important;
+        border: 1px solid rgba(var(--site-ink),0.12);
+        color: rgba(var(--site-ink),0.65) !important;
     }
 
     .btn-outline:hover {
-        border-color: rgba(255,255,255,0.25);
-        color: #fff !important;
+        border-color: rgba(var(--site-ink),0.25);
+        color: rgb(var(--site-ink)) !important;
         transform: translateY(-1px);
     }
 
@@ -288,7 +287,7 @@
         align-items: center;
         gap: 0.5rem;
         text-decoration: none !important;
-        color: rgba(255,255,255,0.3);
+        color: var(--site-muted-color);
         transition: color 0.3s;
     }
 
@@ -315,13 +314,13 @@
     /* ── Divider ── */
     .section-divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
+        background: linear-gradient(90deg, transparent, rgba(var(--site-ink),0.06) 20%, rgba(var(--site-ink),0.06) 80%, transparent);
         margin: 0 3rem;
     }
 
     /* ── Modules section ── */
     .modules-section {
-        background: #0b1120;
+        background: var(--md-default-bg-color);
         padding: 4rem 3rem 5rem;
         position: relative;
     }
@@ -333,12 +332,12 @@
     .modules-header h2 {
         font-size: 1.6rem;
         font-weight: 700;
-        color: #fff;
+        color: rgb(var(--site-ink));
         margin: 0;
     }
 
     .modules-meta {
-        color: rgba(255,255,255,0.3);
+        color: var(--site-muted-color);
         font-size: 0.9rem;
         margin-bottom: 2rem;
     }
@@ -364,8 +363,8 @@
 
     /* ── Module card ── */
     .mod-card {
-        background: rgba(255,255,255,0.025);
-        border: 1px solid rgba(255,255,255,0.06);
+        background: rgba(var(--site-ink),0.025);
+        border: 1px solid rgba(var(--site-ink),0.06);
         border-radius: 14px;
         padding: 1.6rem 1.8rem;
         position: relative;
@@ -387,8 +386,8 @@
     }
 
     .mod-card:hover {
-        background: rgba(255,255,255,0.05);
-        border-color: rgba(255,255,255,0.1);
+        background: rgba(var(--site-ink),0.05);
+        border-color: rgba(var(--site-ink),0.1);
         transform: translateY(-2px);
     }
 
@@ -413,14 +412,14 @@
     .mod-card h3 {
         font-size: 1.05rem;
         font-weight: 650;
-        color: #fff;
+        color: rgb(var(--site-ink));
         margin: 0 0 0.5rem;
         line-height: 1.35;
     }
 
     .mod-card p {
         font-size: 0.85rem;
-        color: rgba(255,255,255,0.35);
+        color: var(--site-muted-color);
         line-height: 1.6;
         margin: 0;
     }
@@ -452,8 +451,8 @@
 
     /* ── Footer ── */
     .site-footer {
-        background: #080d1a;
-        border-top: 1px solid rgba(255,255,255,0.04);
+        background: var(--site-footer-bg);
+        border-top: 1px solid rgba(var(--site-ink),0.04);
         padding: 1.5rem 3rem;
         display: flex;
         align-items: center;
@@ -465,7 +464,7 @@
         font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
         font-size: 0.78rem;
         font-weight: 600;
-        color: rgba(255,255,255,0.45);
+        color: var(--site-muted-color);
         letter-spacing: 0.05em;
     }
 
@@ -474,7 +473,7 @@
     .footer-sep {
         width: 1px;
         height: 18px;
-        background: rgba(255,255,255,0.1);
+        background: rgba(var(--site-ink),0.1);
     }
 
     .footer-icons {
@@ -489,15 +488,15 @@
         justify-content: center;
         width: 32px;
         height: 32px;
-        color: rgba(255,255,255,0.3);
+        color: var(--site-muted-color);
         border-radius: 50%;
         transition: all 0.25s ease;
         text-decoration: none !important;
     }
 
     .footer-icons a:hover {
-        color: #fff;
-        background: rgba(255,255,255,0.08);
+        color: rgb(var(--site-ink));
+        background: rgba(var(--site-ink),0.08);
     }
 
     .footer-icons a.linkedin:hover { color: #0a66c2; }
