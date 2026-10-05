@@ -79,6 +79,22 @@
     background: linear-gradient(110deg, #6d28d9, #be185d, #0e7490);
 }
 
+[data-md-color-scheme="vintage"] {
+    --md-primary-fg-color: #704214;
+    --md-accent-fg-color: #b8860b;
+    --md-typeset-a-color: #8b5a2b;
+    --md-default-bg-color: #f4ecd8;
+    --md-default-fg-color: #4b3621;
+    --md-code-bg-color: #e8dcc0;
+    --site-footer-bg: #e8dcc0;
+    --site-muted-color: #6b5435;
+}
+
+[data-md-color-scheme="vintage"] .md-header,
+[data-md-color-scheme="vintage"] .md-tabs {
+    background: #704214;
+}
+
 :root {
   --md-admonition-icon--blank: url('');
   --md-admonition-icon--vidcast: url('data:image/svg+xml;charset=utf-8,<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.8646 13.9022C25.8646 12.4539 25.1157 11.1806 23.9841 10.4481L23.9842 10.4479L23.9779 10.4439C23.9448 10.4226 23.9113 10.4016 23.8775 10.3812L8.03093 0.480048C7.17747 -0.0208221 6.11028 0.000124794 6.11028 0.000124794V0.000330829C6.10293 0.000330829 6.09565 5.61161e-05 6.0883 5.61161e-05C4.01223 -1.2562e-05 2.32316 1.65699 2.27138 3.72063L2.27014 3.72028L2.27 13.5777H2.27097C2.30675 15.4391 3.82673 16.937 5.6967 16.937C7.56667 16.937 9.12086 15.4053 9.12319 13.5148V9.38479L16.5507 14.1065L4.97414 21.7197V21.7199C4.05241 22.334 3.44495 23.3827 3.44495 24.5734C3.44495 26.4659 4.97908 28 6.87151 28C7.47031 28 8.03306 27.8462 8.52287 27.5763V27.5765L8.52315 27.5761C8.59924 27.5342 8.67355 27.4894 8.74594 27.442H8.74635L24.0441 17.3168H24.0439C25.142 16.5785 25.8644 15.3247 25.8644 13.902L25.8646 13.9022Z" fill="black" fill-opacity="0.95"/></svg>');
