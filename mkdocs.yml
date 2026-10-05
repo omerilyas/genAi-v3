@@ -34,6 +34,12 @@ theme:
       primary: custom
       toggle:
         icon: material/brightness-4
+        name: Switch to colorful mode
+    # Palette toggle for colorful mode
+    - scheme: colorful
+      primary: custom
+      toggle:
+        icon: material/palette
         name: Switch to light mode
 extra_css:
   - stylesheets/extra.css
