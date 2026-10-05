@@ -460,7 +460,7 @@ Once our data is prepared and gathered in the correct format, the next step is u
 * **Checkpoints:** The process included checkpoints at steps 62, 124, and the final step, allowing you to save intermediate models during training.
 * **Training loss:** The final training loss achieved was 0.0010, which is a measure of how well the model is fitting the data.
 
-Once the fine-tuning job is complete, you can start using the fine-tuned model either through the API or via the playground available on [OpenAI Platform](platform.openai.com)
+Once the fine-tuning job is complete, you can start using the fine-tuned model either through the API or via the playground available on [OpenAI Platform](https://platform.openai.com)
 
 
 ## Using the fine-tuned model
